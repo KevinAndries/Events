@@ -106,7 +106,7 @@ public class SearchServlet extends HttpServlet {
 
     /**
      * Returns a short description of the servlet.
-     *
+     * test
      * @return a String containing servlet description
      */
     @Override
