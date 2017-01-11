@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>ZaalServlet</servlet-name>
+        <servlet-class>Controller.ZaalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ZaalServlet</servlet-name>
+        <url-pattern>/ZaalServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+   
+    
+    <servlet>
+        <servlet-name>OverviewServlet</servlet-name>
+        <servlet-class>Controller.OverviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OverviewServlet</servlet-name>
+        <url-pattern>/OverviewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AfbeeldingServlet</servlet-name>
+        <servlet-class>Controller.AfbeeldingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AfbeeldingServlet</servlet-name>
+        <url-pattern>/AfbeeldingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PrijsOfferteServlet</servlet-name>
+        <servlet-class>Controller.PrijsOfferteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PrijsOfferteServlet</servlet-name>
+        <url-pattern>/PrijsOfferteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AanvraagPrijsOfferteServlet</servlet-name>
+        <servlet-class>Controller.AanvraagPrijsOfferteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AanvraagPrijsOfferteServlet</servlet-name>
+        <url-pattern>/AanvraagPrijsOfferteServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>ZaalServlet</welcome-file>
+    </welcome-file-list>
+</web-app>
