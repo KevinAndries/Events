@@ -120,78 +120,100 @@
             %>
 
             <div class="row" >
-           
-                    <form action="AanvraagPrijsOfferteServlet" value="conf" name="aanvraagPrijsOfferte" method="post" class="col s12">
-                        <!--<form action="succes.jsp">-->
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input  id="first_name" type="text" class="validate">
-                                <label for="first_name">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="last_name" type="text" class="validate">
-                                <label for="last_name">Last Name</label>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input  id="adres" type="text" class="validate">
-                                <label for="adres">Straat</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="huisnummer" type="number" class="validate">
-                                <label for="huisnummer">Huisnummer</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input  id="gemeente" type="text" class="validate">
-                                <label for="gemeente">Gemeente</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="postcode" type="number" class="validate">
-                                <label for="postcode">Postcode</label>
-                            </div>
-                        </div>
-
-                        <br>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="email" type="email" class="validate">
-                                <label for="email">Email</label>
-                            </div>
+                <form action="AanvraagPrijsOfferteServlet" value="conf" name="aanvraagPrijsOfferte" method="post" class="col s12">
+                    <!--<form action="succes.jsp">-->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="first_name" type="text" class="validate">
+                            <label for="first_name">Voornaam</label>
                         </div>
                         <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Achternaam</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="adres" type="text" class="validate">
+                            <label for="adres">Straat</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="huisnummer" type="number" class="validate">
+                            <label for="huisnummer">Huisnummer</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="gemeente" type="text" class="validate">
+                            <label for="gemeente">Gemeente</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="postcode" type="number" class="validate">
+                            <label for="postcode">Postcode</label>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="input-field inline">
 
                             <option value="" disabled selected style="color:white">Reden boeking</option>
                             <select multiple>                          
-                                <option value="1">Bedrijfsfeest</option>
+                                <option color="white" value="1">Bedrijfsfeest</option>
                                 <option value="2">Huwelijksfeest</option>
                                 <option value="3">Verjaardagsfeest</option>
                             </select>
-                            <option value="" disabled selected style="color:white">Datum boeking</option>
-                            <input  type="date" class="datepicker">
-
                             <font color="white">Aantal personen:</font>
                             <div class="input-field inline">
                                 <input id="aantal" type="number" class="validate">
                                 <label for="aantal"></label>
+
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field inline">
+                            <option value="" disabled selected style="color:white">Datum boeking</option>
+                            <input  type="date" class="datepicker">
+
+
                         </div>
-                        <form action="PrijsOfferteServlet" value="conf" name="prijsOfferte" method="POST">
-                            <button class="btn waves-effect waves-light">
-                             <a href="../ProjectEventsWeb/PrijsOfferteServlet?zaalId=<%= z.getZaalid()%>">Versturen<a/>
-                                
-                            </button>
-                        </form>
-
-                    </form>
+                    </div>
                     <br>
                     <br>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Opmerkingen</label>
+                        </div>
 
                     </div>
+            </div>
+            <form action="PrijsOfferteServlet" value="conf" name="prijsOfferte" method="POST">
+                <button class="btn waves-effect waves-light">
+                    <a href="../ProjectEventsWeb/PrijsOfferteServlet?zaalId=<%= z.getZaalid()%>">Versturen<a/>
+
+                </button>
+            </form>
+
+        </form>
+        <br>
+        <br>
+
+    </div>
 
 
 
@@ -204,53 +226,7 @@
 
 
 
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!--<script src="js/jquery.min.js"></script>
-                    <script src="js/materialize.min.js"></script>
-                    
-                    <script>
-                        $(document).ready(function () {
-                            $('.slider').slider();
-                            $('.materialboxed').materialbox();
-                        });
-                        $(function () {
-                            // See if this is a touch device
-                            if ('ontouchstart' in window)
-                            {
-                                // Set the correct [touchscreen] body class
-                                $('body').removeClass('no-touch').addClass('touch');
-                    
-                                // Add the touch toggle to show text when tapped
-                                $('div.boxInner img').click(function () {
-                                    $(this).closest('.boxInner').toggleClass('touchFocus');
-                                });
-                            }
-                        });
-                    
-                        $(document).ready(function () {
-                            $('select').material_select();
-                        });
-                    
-                    </script>-->
+</div>
 
 
 
@@ -264,6 +240,40 @@
 
 
 
-                    </div>
-                    </body>
-                    </html>
+
+
+
+
+
+
+<!--<script src="js/jquery.min.js"></script>
+<script src="js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.slider').slider();
+        $('.materialboxed').materialbox();
+    });
+    $(function () {
+        // See if this is a touch device
+        if ('ontouchstart' in window)
+        {
+            // Set the correct [touchscreen] body class
+            $('body').removeClass('no-touch').addClass('touch');
+
+            // Add the touch toggle to show text when tapped
+            $('div.boxInner img').click(function () {
+                $(this).closest('.boxInner').toggleClass('touchFocus');
+            });
+        }
+    });
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+
+</script>-->
+
+</div>
+</body>
+</html>
