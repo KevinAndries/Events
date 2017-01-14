@@ -51,7 +51,7 @@
                         <a href="#!" class="brand-logo"><i class="material-icons">polymer</i>Zaalinformatie</a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="../ProjectEventsWeb/search.jsp"><i class="material-icons">search</i></a></li>
-                           <!--<li><a href="../ProjectEventsWeb/ImagesServlet"><i class="material-icons">view_module</i></a></li>-->
+                            <!--<li><a href="../ProjectEventsWeb/ImagesServlet"><i class="material-icons">view_module</i></a></li>-->
                             <!--<li><a href="../ProjectEventsWeb/ZaalServlet"><i class="material-icons">refresh</i></a></li>-->
                             <!--<li><a href="index.jsp"><i class="material-icons">more_vert</i></a></li>-->
                             <li><a href="../ProjectEventsWeb/ZaalServlet"><i class="material-icons">home</i></a></li>
@@ -117,8 +117,30 @@
 
             %>
 
+
             <form action="PrijsOfferteServlet" value="conf" name="prijsOfferte" method="post">
-                Uw aanvraag voor <%= z.getNaam()%> werd correct ontvangen. 
+
+<br>
+
+
+                <div class="row">
+                    <div class="col s12 m7">
+                        <div class="card">
+                            <!--<div class="card-image">
+                                <img src=<% z.getProfiel();%>></div>-->
+                                <span class="card-title">Verzonden</span>
+                            
+                            <div class="card-content">
+                                <p>Uw aanvraag voor <%= z.getNaam()%> werd correct ontvangen. </p>
+                            </div>
+                            <div class="card-action">
+                                <!--<a href="#">This is a link</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+       
             </form>
 
 
