@@ -400,6 +400,7 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setEnabled(true);
             txtOppervlakteUp.setEnabled(true);
             txtTarievenUp.setEnabled(true);
+            
 
         } else {
             Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
@@ -454,29 +455,37 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
+            ImageIcon image = new ImageIcon(zaal.getProfiel());
+            lblFoto.setIcon(image);
+            
         }
 
-        try {
-            byte[] imageBytes;
-            Image image;
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
-            zaal.getZaalId();
-            PreparedStatement ps = conn.prepareStatement("SELECT PROFIEL FROM zaal WHERE ZAALID=?");
-
-            ps.setInt(1, zaal.getZaalId());
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                imageBytes = rs.getBytes(1);
-                image = getToolkit().createImage(imageBytes);
-                ImageIcon icon = new ImageIcon(image);
-                lblFoto.setIcon(icon);
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+//        try {
+////            byte[] imageBytes;
+////            Image image;
+////
+////            Class.forName("com.mysql.jdbc.Driver");
+////            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
+////            zaal.getZaalId();
+////            PreparedStatement ps = conn.prepareStatement("SELECT PROFIEL FROM zaal WHERE ZAALID=?");
+////            
+////            ps.setInt(1, zaal.getZaalId());
+////            ResultSet rs = ps.executeQuery();
+////            while (rs.next()) {
+////                //ImageIcon image = new ImageIcon(path);
+////                
+////                
+////                
+////                imageBytes = rs.getBytes(1);
+////                image = getToolkit().createImage(imageBytes);
+////                ImageIcon icon = new ImageIcon(image);
+////                lblFoto.setIcon(icon);
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println(e);
+//
+//        }
     }//GEN-LAST:event_lstbZalenValueChanged
 
     private void txtPostcodeUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostcodeUpActionPerformed

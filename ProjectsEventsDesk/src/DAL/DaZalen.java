@@ -123,6 +123,10 @@ public class DaZalen {
                 zaal.setCapZittend(rs.getInt("capZittend"));
                 zaal.setCapStaand(rs.getInt("capStaand"));
                 zaal.setOppervlakte(rs.getInt("Oppervlakte"));
+                
+                zaal.setProfiel(rs.getString("Profiel"));
+                
+                
 
                 result.add(zaal);
             }

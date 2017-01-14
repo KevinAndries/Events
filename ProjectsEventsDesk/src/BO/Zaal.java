@@ -19,14 +19,14 @@ public class Zaal {
     private int capZittend;
     private int capStaand;
     private int oppervlakte;
-    private byte[] profiel;
+    private String profiel;
     
 // Constructor
     public Zaal() {
         ZaalId=0;
     }
 
-    public Zaal(int ZaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, int capZittend, int capStaand, int oppervlakte, String kenmerken, String faciliteiten, double tarieven, byte[] profiel) {
+    public Zaal(int ZaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, int capZittend, int capStaand, int oppervlakte, String kenmerken, String faciliteiten, double tarieven, String profiel) {
         this.ZaalId = ZaalId;
         this.naam = naam;
         this.adres = adres;
@@ -227,13 +227,13 @@ public class Zaal {
         this.tarieven = tarieven;
     }
 
-    public byte[] getProfiel() {
+    public String getProfiel() {
         return profiel;
     }
 
 
 
-    public void setProfiel(byte[] profiel) {
+    public void setProfiel(String profiel) {
         this.profiel = profiel;
     }
     
