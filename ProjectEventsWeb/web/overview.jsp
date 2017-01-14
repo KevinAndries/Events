@@ -142,9 +142,8 @@
                                 <div class="collapsible-body"><p>offerte aanvragen</p></div>
                             </li>
                             <li>
-                                <div class="collapsible-header"><i class="material-icons">picture_in_picture</i>Afbeeldingen</div>
+                                <div class="collapsible-header" ><i class="material-icons">picture_in_picture</i>Afbeeldingen</div>
                                 <div class="collapsible-body"><p>
-
                                         <%
                                             String[] selectedAfbeelding = {"Interieur", "Tuin", "Extra", "Extra2"};
                                         %>
@@ -182,28 +181,30 @@
             <%  %>
             <% }
                 }%>
-            <%
-                Object objAfbeeldingen = request.getSession().getAttribute("afbeeldingen");
-                if (objAfbeeldingen == null) {
-                    RequestDispatcher rd = request.getRequestDispatcher("AanvraagPrijsOfferteServlet");
-                    rd.forward(request, response);
 
-                } else {
+                <%
+                    Object objAfbeeldingen = request.getSession().getAttribute("afbeeldingen");
+                    if (objAfbeeldingen == null) {
+                        RequestDispatcher rd = request.getRequestDispatcher("AanvraagPrijsOfferteServlet");
+                        rd.forward(request, response);
 
-                    List<afbeelding> lstAfbeeldingen = (List<afbeelding>) objAfbeeldingen;
-                    for (afbeelding ap : lstAfbeeldingen) {%>
+                    } else {
 
-            <%
+                        List<afbeelding> lstAfbeeldingen = (List<afbeelding>) objAfbeeldingen;
+                        for (afbeelding ap : lstAfbeeldingen) {%> 
 
-            %>
 
-            <a href="../ProjectEventsWeb/AanvraagPrijsOfferteServlet?zaalId=<%= ap.getZaalid()%>" ></a>
+                <%
 
-            <% }
+                %>
+
+                <a href="../ProjectEventsWeb/AanvraagPrijsOfferteServlet?zaalId=<%= ap.getZaalid()%>" ></a>
+
+                <% }
                 }%>
 
+            </div>
         </div>
-    </div>
 
 
 </body>

@@ -68,25 +68,26 @@
                         <table>
                             <br>
                             <tr>
-                                <td ><b>Zaal ID:</b>
+                                <td ><b><font color="white">Zaal ID:</font></b>
                                 <td><input  type="text" name="zaalId" id="zaalId"></td>
                             </tr>
-                            <td ><b>Naam:</b>
+                            <td ><b><font color="white">Naam:</font></b>
                             <td><input  type="text" name="naam" id="Naam"></td>
                             </tr>
-                            <td ><b>Adres:</b></td>
+                            <td ><b><font color="white">Adres:</font></b></td>
                             <td><input  type="text" name="adres" id="Adres"></td>
                             </tr>
-                            <p><td ><b>Gemeente:</b></td>
+                            <p><td ><b><font color="white">Gemeente:</font></b></td>
                             <td><input  type="text" name="gemeente" id="Gemeente"></td>
                             </tr>
-                            <td ><b>Postcode:</b></td>
+                            <td ><b><font color="white">Postcode:</font></b></td>
                             <td><input  type="text" name="postcode" id="Postcode"></td> 
                             </tr>  
                         </table>
-                        <input id="Search" type="submit" value="Search">
+                       
+                        <input class="btn waves-effect waves-light" id="Search" type="submit" value="Search">
                         <label for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
+                        
                     </div>
                 </div>
                 <%
