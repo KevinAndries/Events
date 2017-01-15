@@ -56,7 +56,7 @@ public class Zaal implements Serializable {
     @Column
     private int oppervlakte;
     @Column
-    private byte[] profiel;
+    private String profiel;
 
     public int getZaalId() {
         return zaalId;
@@ -150,7 +150,7 @@ public class Zaal implements Serializable {
         return oppervlakte;
     }
 
-    public byte[] getProfiel() {
+    public String getProfiel() {
         return profiel;
     }
 
@@ -166,11 +166,11 @@ public class Zaal implements Serializable {
         this.oppervlakte = oppervlakte;
     }
 
-    public void setProfiel(byte[] profiel) {
+    public void setProfiel(String profiel) {
         this.profiel = profiel;
     }
 
-    public Zaal(int zaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, String kenmerken, String faciliteiten, double tarieven, int capZittend, int capStaand, int oppervlakte) { // byte[] profiel) {
+    public Zaal(int zaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, String kenmerken, String faciliteiten, double tarieven, int capZittend, int capStaand, int oppervlakte, String profiel) { // byte[] profiel) {
         this.zaalId = zaalId;
         this.naam = naam;
         this.adres = adres;

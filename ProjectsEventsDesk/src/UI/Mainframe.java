@@ -72,7 +72,7 @@ public class Mainframe extends javax.swing.JFrame {
         jPanelUp.setVisible(false);
         btnWijzigen.setVisible(false);
         btnToevoegenFoto.setVisible(false);
-        btnOpslaanFoto.setVisible(false);
+        //btnOpslaanFoto.setVisible(false);
         
 
     }
@@ -120,7 +120,6 @@ public class Mainframe extends javax.swing.JFrame {
         lblPostcodeUp = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
         btnToevoegenFoto = new javax.swing.JButton();
-        btnOpslaanFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -318,18 +317,6 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
-        btnOpslaanFoto.setText("Profiel foto wijzigen");
-        btnOpslaanFoto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOpslaanFotoMouseClicked(evt);
-            }
-        });
-        btnOpslaanFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpslaanFotoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -337,18 +324,16 @@ public class Mainframe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnOpslaanFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnVerwijderen)
-                            .addComponent(btnToevoegen, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(btnToevoegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerwijderen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelUp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnWijzigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -371,10 +356,8 @@ public class Mainframe extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOpslaanFoto)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(47, 47, 47))))
         );
 
         pack();
@@ -436,7 +419,7 @@ public class Mainframe extends javax.swing.JFrame {
         jPanelUp.setVisible(true);
         btnWijzigen.setVisible(true);
         btnToevoegenFoto.setVisible(true);
-        btnOpslaanFoto.setVisible(true);
+        //btnOpslaanFoto.setVisible(true);
         
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
@@ -456,7 +439,9 @@ public class Mainframe extends javax.swing.JFrame {
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
             ImageIcon image = new ImageIcon(zaal.getProfiel());
+            
             lblFoto.setIcon(image);
+            
             
         }
 
@@ -539,67 +524,9 @@ public class Mainframe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnToevoegenFotoActionPerformed
 
-    private void btnOpslaanFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpslaanFotoActionPerformed
-
-        Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
-
-        if (zaal != null) {
-
-            txtNaamUp.setText(zaal.getNaam());
-            txtAdresUp.setText(zaal.getAdres());
-            txtHuisnummerUp.setText(String.valueOf(zaal.getHuisnummer()));
-            txtGemeenteUp.setText(zaal.getGemeente());
-            txtPostcodeUp.setText(String.valueOf(zaal.getPostcode()));
-            txtEmailUp.setText(zaal.getEmail());
-            txtaKenmerkenUp.setText(zaal.getKenmerken());
-            txtaFaciliteitenUp.setText(zaal.getFaciliteiten());
-            txtCapZittendUp.setText(String.valueOf(zaal.getCapZittend()));
-            txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
-            txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
-            txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
-        }
-
-        try {
-            byte[] imageBytes;
-            Image image;
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
-
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO afbeelding(Afbeelding,ZaalId) VALUES (?,?)");
-
-            FileDialog fd = new FileDialog(this);
-            fd.show();
-            path = fd.getDirectory() + fd.getFile();
-
-            ps.setString(1, fd.getFile());
-            ps.setInt(2, zaal.getZaalId());
-
-            //ResultSet rs = ps.executeQuery();
-            int rs = ps.executeUpdate();
-            //while (rs.next()) 
-            {
-//                imageBytes = rs.getBytes(2);
-//                image = getToolkit().createImage(imageBytes);
-//                ImageIcon icon = new ImageIcon(image);
-//                lblFoto.setIcon(icon);
-                lblFoto.setIcon(new ImageIcon(path));
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
-
-        //this.Ophalen();
-    }//GEN-LAST:event_btnOpslaanFotoActionPerformed
-
     private void lstbZalenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstbZalenMouseClicked
 
     }//GEN-LAST:event_lstbZalenMouseClicked
-
-    private void btnOpslaanFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpslaanFotoMouseClicked
-
-    }//GEN-LAST:event_btnOpslaanFotoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -637,7 +564,6 @@ public class Mainframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOpslaanFoto;
     private javax.swing.JButton btnToevoegen;
     private javax.swing.JButton btnToevoegenFoto;
     private javax.swing.JButton btnVerwijderen;

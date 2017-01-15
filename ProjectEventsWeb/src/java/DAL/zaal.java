@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "zaal.findByTarieven", query = "SELECT z FROM zaal z WHERE z.tarieven = :tarieven"),
     @NamedQuery(name = "zaal.findByCapzittend", query = "SELECT z FROM zaal z WHERE z.capzittend = :capzittend"),
     @NamedQuery(name = "zaal.findByCapstaand", query = "SELECT z FROM zaal z WHERE z.capstaand = :capstaand"),
-    @NamedQuery(name = "zaal.findByOppervlakte", query = "SELECT z FROM zaal z WHERE z.oppervlakte = :oppervlakte")})
+    @NamedQuery(name = "zaal.findByOppervlakte", query = "SELECT z FROM zaal z WHERE z.oppervlakte = :oppervlakte"),
+    @NamedQuery(name = "zaal.findByProfiel", query = "SELECT z FROM zaal z WHERE z.profiel = :profiel")})
 public class zaal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -81,8 +82,7 @@ public class zaal implements Serializable {
     private Integer capstaand;
     @Column(name = "OPPERVLAKTE")
     private Integer oppervlakte;
-    @Lob
-    @Size(max = 65535)
+    @Size(max = 255)
     @Column(name = "PROFIEL", length = 65535)
     private String profiel;
 
