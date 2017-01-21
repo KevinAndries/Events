@@ -385,6 +385,7 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setEnabled(true);
             txtOppervlakteUp.setEnabled(true);
             txtTarievenUp.setEnabled(true);
+            lblFoto.setEnabled(true);
 
         } else {
             Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
@@ -400,7 +401,8 @@ public class Mainframe extends javax.swing.JFrame {
             zaal.setCapStaand(Integer.parseInt(txtCapStaandUp.getText()));
             zaal.setOppervlakte(Integer.parseInt(txtOppervlakteUp.getText()));
             zaal.setTarieven(Double.parseDouble(txtTarievenUp.getText()));
-
+            zaal.setProfiel(zaal.getProfiel());
+            
             service.UpdateZaal(zaal.getZaalId(), zaal);
         }
     }//GEN-LAST:event_btnWijzigenActionPerformed

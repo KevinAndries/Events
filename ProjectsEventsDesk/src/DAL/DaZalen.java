@@ -170,7 +170,7 @@ public class DaZalen {
             } else {
 
                 sql = "UPDATE zaal SET Naam='" + zaal.getNaam() + "',Adres='" + zaal.getAdres() + "',Huisnummer=" + zaal.getHuisnummer() + ",Gemeente='" + zaal.getGemeente() + "',Postcode=" + zaal.getPostcode() + ",Email='" + zaal.getEmail() + "',Kenmerken='"
-                        + zaal.getKenmerken() + "',Faciliteiten='" + zaal.getFaciliteiten() + "',Tarieven=" + zaal.getTarieven() + ",CapZittend=" + zaal.getCapZittend() + ",CapStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + ",Profiel=" + zaal.getProfiel() + " WHERE ZaalId=" + zaal.getZaalId() + ";";
+                        + zaal.getKenmerken() + "',Faciliteiten='" + zaal.getFaciliteiten() + "',Tarieven=" + zaal.getTarieven() + ",CapZittend=" + zaal.getCapZittend() + ",CapStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + ",Profiel='" + zaal.getProfiel() + "' WHERE ZaalId=" + zaal.getZaalId() + ";";
                 //+ "UPDATE tbl_capaciteit SET CapaciteitZittend=" + zaal.getCapaciteitZittend() + ",CapaciteitStaand=" + zaal.getCapaciteitStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + " WHERE GegevensID=" + zaal.getID() + "; Commit;";
 
                 int resultUp = stmt.executeUpdate(sql);

@@ -1,5 +1,7 @@
 package BO;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Andries Kevin
@@ -262,6 +264,10 @@ public class Zaal {
 
 
     private void append(String property) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setProfiel(JLabel lblFoto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
