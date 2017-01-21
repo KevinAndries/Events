@@ -8,11 +8,15 @@ package UI;
 import BO.Zaal;
 import Services.ZaalService;
 import java.awt.FileDialog;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -73,7 +77,6 @@ public class Mainframe extends javax.swing.JFrame {
         btnWijzigen.setVisible(false);
         btnToevoegenFoto.setVisible(false);
         //btnOpslaanFoto.setVisible(false);
-        
 
     }
 
@@ -328,8 +331,8 @@ public class Mainframe extends javax.swing.JFrame {
                     .addComponent(btnToevoegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVerwijderen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 8, Short.MAX_VALUE)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8)
+                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -349,15 +352,13 @@ public class Mainframe extends javax.swing.JFrame {
                     .addComponent(btnVerwijderen)
                     .addComponent(btnToevoegenFoto))
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(47, 47, 47))))
+                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -383,7 +384,6 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setEnabled(true);
             txtOppervlakteUp.setEnabled(true);
             txtTarievenUp.setEnabled(true);
-            
 
         } else {
             Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
@@ -420,7 +420,6 @@ public class Mainframe extends javax.swing.JFrame {
         btnWijzigen.setVisible(true);
         btnToevoegenFoto.setVisible(true);
         //btnOpslaanFoto.setVisible(true);
-        
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
 
@@ -438,11 +437,24 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
-            ImageIcon image = new ImageIcon(zaal.getProfiel());
+            //lblFoto.setIcon(new ImageIcon(zaal.getProfiel()));
             
-            lblFoto.setIcon(image);
+            //ImageIcon image = new ImageIcon(zaal.getProfiel());
+
+            BufferedImage img;
+            try {
+                img = ImageIO.read(new File("C:\\Users\\andri\\Desktop\\Programmeren 4 project thuis\\SVN GitHub\\ProjectsEventsDesk\\" + zaal.getProfiel()));
+                ImageIcon icon = new ImageIcon(img);
+                lblFoto.setIcon(icon);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
+    
+
+
         }
 
 //        try {
@@ -506,7 +518,7 @@ public class Mainframe extends javax.swing.JFrame {
             FileDialog fd = new FileDialog(this);
             fd.show();
             path = fd.getDirectory() + fd.getFile();
-            ps.setString(1, fd.getFile());           
+            ps.setString(1, fd.getFile());
             ps.setInt(2, zaal.getZaalId());
             //ResultSet rs = ps.executeQuery();
             int rs = ps.executeUpdate();
