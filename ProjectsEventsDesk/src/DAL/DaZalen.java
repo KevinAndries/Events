@@ -150,9 +150,9 @@ public class DaZalen {
 
             if (zaal.getZaalId() == 0) {
 
-                sql = "INSERT INTO zaal(Naam,Adres,Huisnummer,Gemeente,Postcode,Email,Kenmerken,Faciliteiten,Tarieven,CapZittend,CapStaand,Oppervlakte) VALUES ('" + zaal.getNaam() + "','"
+                sql = "INSERT INTO zaal(Naam,Adres,Huisnummer,Gemeente,Postcode,Email,Kenmerken,Faciliteiten,Tarieven,CapZittend,CapStaand,Oppervlakte,Profiel) VALUES ('" + zaal.getNaam() + "','"
                         + zaal.getAdres() + "'," + zaal.getHuisnummer() + ",'" + zaal.getGemeente() + "'," + zaal.getPostcode() + ",'" + zaal.getEmail() + "','" + zaal.getKenmerken() + "','"
-                        + zaal.getFaciliteiten() + "'," + zaal.getTarieven() + "," + zaal.getCapZittend() + "," + zaal.getCapStaand() + "," + zaal.getOppervlakte() + "); ";
+                        + zaal.getFaciliteiten() + "'," + zaal.getTarieven() + "," + zaal.getCapZittend() + "," + zaal.getCapStaand() + "," + zaal.getOppervlakte() + ",'" + zaal.getProfiel() + "'); ";
 
                 int result = stmt.executeUpdate(sql);
 
@@ -170,7 +170,7 @@ public class DaZalen {
             } else {
 
                 sql = "UPDATE zaal SET Naam='" + zaal.getNaam() + "',Adres='" + zaal.getAdres() + "',Huisnummer=" + zaal.getHuisnummer() + ",Gemeente='" + zaal.getGemeente() + "',Postcode=" + zaal.getPostcode() + ",Email='" + zaal.getEmail() + "',Kenmerken='"
-                        + zaal.getKenmerken() + "',Faciliteiten='" + zaal.getFaciliteiten() + "',Tarieven=" + zaal.getTarieven() + ",CapZittend=" + zaal.getCapZittend() + ",CapStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + " WHERE ZaalId=" + zaal.getZaalId() + ";";
+                        + zaal.getKenmerken() + "',Faciliteiten='" + zaal.getFaciliteiten() + "',Tarieven=" + zaal.getTarieven() + ",CapZittend=" + zaal.getCapZittend() + ",CapStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + ",Profiel=" + zaal.getProfiel() + " WHERE ZaalId=" + zaal.getZaalId() + ";";
                 //+ "UPDATE tbl_capaciteit SET CapaciteitZittend=" + zaal.getCapaciteitZittend() + ",CapaciteitStaand=" + zaal.getCapaciteitStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + " WHERE GegevensID=" + zaal.getID() + "; Commit;";
 
                 int resultUp = stmt.executeUpdate(sql);
