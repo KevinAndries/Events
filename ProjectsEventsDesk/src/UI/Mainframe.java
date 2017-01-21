@@ -407,9 +407,6 @@ public class Mainframe extends javax.swing.JFrame {
     private void btnVerwijderenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenActionPerformed
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
-        //int index = lstbZalen.getSelectedIndex();
-        //Mainframe mfr = new Mainframe(roomMap)
-        //this.dispose();
         service.DeleteZaal(zaal);
 
     }//GEN-LAST:event_btnVerwijderenActionPerformed
@@ -437,9 +434,7 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
-            //lblFoto.setIcon(new ImageIcon(zaal.getProfiel()));
-            
-            //ImageIcon image = new ImageIcon(zaal.getProfiel());
+
 
             BufferedImage img;
             try {
@@ -450,39 +445,7 @@ public class Mainframe extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-    
-
-
         }
-
-//        try {
-////            byte[] imageBytes;
-////            Image image;
-////
-////            Class.forName("com.mysql.jdbc.Driver");
-////            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
-////            zaal.getZaalId();
-////            PreparedStatement ps = conn.prepareStatement("SELECT PROFIEL FROM zaal WHERE ZAALID=?");
-////            
-////            ps.setInt(1, zaal.getZaalId());
-////            ResultSet rs = ps.executeQuery();
-////            while (rs.next()) {
-////                //ImageIcon image = new ImageIcon(path);
-////                
-////                
-////                
-////                imageBytes = rs.getBytes(1);
-////                image = getToolkit().createImage(imageBytes);
-////                ImageIcon icon = new ImageIcon(image);
-////                lblFoto.setIcon(icon);
-//            }
-//
-//        } catch (Exception e) {
-//            System.out.println(e);
-//
-//        }
     }//GEN-LAST:event_lstbZalenValueChanged
 
     private void txtPostcodeUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostcodeUpActionPerformed
@@ -510,24 +473,18 @@ public class Mainframe extends javax.swing.JFrame {
         }
 
         try {
-            //byte[] imageBytes;
-            //Image image;
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
             PreparedStatement ps = conn.prepareStatement("INSERT INTO afbeelding(Afbeelding,ZaalId) VALUES (?,?)");
             FileDialog fd = new FileDialog(this);
             fd.show();
             path = fd.getDirectory() + fd.getFile();
-            ps.setString(1, fd.getFile());
+            ps.setString(1, "Images/Zalen/" + fd.getFile());
             ps.setInt(2, zaal.getZaalId());
-            //ResultSet rs = ps.executeQuery();
             int rs = ps.executeUpdate();
-            //while (rs.next()) 
+
             {
-//                imageBytes = rs.getBytes(2);
-//                image = getToolkit().createImage(imageBytes);
-//                ImageIcon icon = new ImageIcon(image);
-//                lblFoto.setIcon(icon);
                 lblFoto.setIcon(new ImageIcon(path));
             }
 
