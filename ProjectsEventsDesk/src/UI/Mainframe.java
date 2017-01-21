@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -435,13 +436,12 @@ public class Mainframe extends javax.swing.JFrame {
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
 
-
             BufferedImage img;
             try {
                 img = ImageIO.read(new File("C:\\Users\\andri\\Desktop\\Programmeren 4 project thuis\\SVN GitHub\\ProjectsEventsDesk\\" + zaal.getProfiel()));
                 ImageIcon icon = new ImageIcon(img);
                 lblFoto.setIcon(icon);
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -479,16 +479,21 @@ public class Mainframe extends javax.swing.JFrame {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO afbeelding(Afbeelding,ZaalId) VALUES (?,?)");
             FileDialog fd = new FileDialog(this);
             fd.show();
+           
             path = fd.getDirectory() + fd.getFile();
+            
+            
             ps.setString(1, "Images/Zalen/" + fd.getFile());
             ps.setInt(2, zaal.getZaalId());
             int rs = ps.executeUpdate();
 
-            {
-                lblFoto.setIcon(new ImageIcon(path));
+            if (path.endsWith("nullnull")) {
+                JOptionPane.showMessageDialog(null, "Er werd geen afbeelding geselecteerd");
+            } else {
+                JOptionPane.showMessageDialog(null, "Afbeelding werd toegevoegd");
             }
 
-        } catch (Exception e) {
+       } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnToevoegenFotoActionPerformed
