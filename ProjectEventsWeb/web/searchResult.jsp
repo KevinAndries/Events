@@ -71,80 +71,80 @@
                         <i class="material-icons">close</i>
                     </div>
                 </div>-->
-    
+
 
 
             </form>
-    <body>
-        <br>
-        <br>
-        <table width="700px" align="center"
-               style="border:1px solid #FFFFFF;">
-            <tr>
-                <td colspan=13 align="center"
-                    >
-                    <b>Gezochte zalen</b></td>
-            </tr>
-            <tr style="background-color:lightgrey;">
-                <td><b>ZAALID</b></td>
-                <td><b>NAAM</b></td>
-                <td><b>ADRES</b></td>
-                <td><b>HUISNUMMER</b></td>
-                <td><b>GEMEENTE</b></td>
-                <td><b>POSTCODE</b></td>
-                <td><b>EMAIL</b></td>
-                <td><b>FACILITEITEN</b></td>
-                <td><b>KENMERKEN</b></td>
-                <td><b>TARIEVEN</b></td>
-                <td><b>CAPZITTEN</b></td>
-                <td><b>CAPSTAAND</b></td>
-                <td><b>OPPERVLAKTE</b></td>
+            <body>
+                <br>
+                <br>
+                <table class="highlight" class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="zaalid">ZAALID</th>
+                            <th data-field="naam">NAAM</th>
+                            <th data-field="adres">ADRES</th>
+                            <th data-field="huisnummer">HUISNUMMER</th>
+                            <th data-field="gemeente">GEMEENTE</th>
+                            <th data-field="postcode">POSTCODE</th>
+                            <th data-field="email">EMAIL</th>
+                            <th data-field="faciliteiten">FACILITEITEN</th>
+                            <th data-field="prijs">KENMERKEN</th>
+                            <th data-field="tarieven">TARIEVEN</th>
+                            <th data-field="capzitend">CAP ZITTEND</th>
+                            <th data-field="capstaand">CAP STAAND</th>
+                            <th data-field="oppervlakte">OPPERVLAKTE</th>
+                        </tr>
+                        <%
+                            int count = 0;
+                            String color = "#F9EBB3";
+                            if (request.getAttribute("ziList") != null) {
+                                ArrayList al = (ArrayList) request.getAttribute("ziList");
+                                System.out.println(al);
+                                Iterator itr = al.iterator();
+                                while (itr.hasNext()) {
 
-            </tr>
-            <%
-                int count = 0;
-                String color = "#F9EBB3";
-                if (request.getAttribute("ziList") != null) {
-                    ArrayList al = (ArrayList) request.getAttribute("ziList");
-                    System.out.println(al);
-                    Iterator itr = al.iterator();
-                    while (itr.hasNext()) {
+                                    if ((count % 2) == 0) {
+                                        color = "#eeffee";
+                                    }
+                                    count++;
+                                    ArrayList zList = (ArrayList) itr.next();
+                        %>
+                    </thead>
 
-                        if ((count % 2) == 0) {
-                            color = "#eeffee";
+                    <tbody>
+                        <tr>
+                          <td><%=zList.get(0)%></td>
+                        <td><%=zList.get(1)%></td>
+                        <td><%=zList.get(2)%></td>
+                        <td><%=zList.get(3)%></td>
+                        <td><%=zList.get(4)%></td>
+                        <td><%=zList.get(5)%></td>
+                        <td><%=zList.get(6)%></td>
+                        <td><%=zList.get(7)%></td>
+                        <td><%=zList.get(8)%></td>
+                        <td><%=zList.get(9)%></td>
+                        <td><%=zList.get(10)%></td>
+                        <td><%=zList.get(11)%></td>
+                        <td><%=zList.get(12)%></td>
+                        </tr>
+                        
+                        
+                                           <%
+                            }
                         }
-                        count++;
-                        ArrayList zList = (ArrayList) itr.next();
-            %>
-            <tr style="background-color:<%=color%>;">
-                <td><%=zList.get(0)%></td>
-                <td><%=zList.get(1)%></td>
-                <td><%=zList.get(2)%></td>
-                <td><%=zList.get(3)%></td>
-                <td><%=zList.get(4)%></td>
-                <td><%=zList.get(5)%></td>
-                <td><%=zList.get(6)%></td>
-                <td><%=zList.get(7)%></td>
-                <td><%=zList.get(8)%></td>
-                <td><%=zList.get(9)%></td>
-                <td><%=zList.get(10)%></td>
-                <td><%=zList.get(11)%></td>
-                <td><%=zList.get(12)%></td>
+                        if (count == 0) {
+                    %>
+                    <tr>
+                        <td colspan=4 align="center"
+                            style="background-color:#eeffee"><b>No Record Found..</b></td>
+                    </tr>
+                    <%            }
+                    %> 
+                        
 
-                                                       
-            </tr>
-            <%
-                    }
-                }
-                if (count == 0) {
-            %>
-            <tr>
-                <td colspan=4 align="center"
-                    style="background-color:#eeffee"><b>No Record Found..</b></td>
-            </tr>
-            <%            }
-            %>
-        </table>
+                    </tbody>
+                </table>
 
 
 
@@ -166,30 +166,29 @@
 
 
 
+                <script src="js/jquery.min.js"></script>
+                <script src="js/materialize.min.js"></script>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/materialize.min.js"></script>
-
-        <script>
-            $(document).ready(function () {
-                $('.slider').slider();
-                $('.materialboxed').materialbox();
-            });
-            $(function () {
-                // See if this is a touch device
-                if ('ontouchstart' in window)
-                {
-                    // Set the correct [touchscreen] body class
-                    $('body').removeClass('no-touch').addClass('touch');
-
-                    // Add the touch toggle to show text when tapped
-                    $('div.boxInner img').click(function () {
-                        $(this).closest('.boxInner').toggleClass('touchFocus');
+                <script>
+                    $(document).ready(function () {
+                        $('.slider').slider();
+                        $('.materialboxed').materialbox();
                     });
-                }
-            });
+                    $(function () {
+                        // See if this is a touch device
+                        if ('ontouchstart' in window)
+                        {
+                            // Set the correct [touchscreen] body class
+                            $('body').removeClass('no-touch').addClass('touch');
 
-        </script>
+                            // Add the touch toggle to show text when tapped
+                            $('div.boxInner img').click(function () {
+                                $(this).closest('.boxInner').toggleClass('touchFocus');
+                            });
+                        }
+                    });
+
+                </script>
 
 
 
@@ -203,6 +202,6 @@
 
 
 
-    </div>
-</body>
+        </div>
+    </body>
 </html>
