@@ -53,7 +53,7 @@
     </div>
 
     <br>
-    <br>
+
     <!--<div class="container">
         <div class="slider">
             <ul class="slides">
@@ -111,6 +111,10 @@
 
             <img id="selectedZaal" src="<%= path%>">
 
+            <br>
+            <br>
+            <br>
+            <br>
             <form action="AanvraagPrijsOfferteServlet" value="conf" name="aanvraagPrijsOfferte" method="POST">
                 <div class="left-align">
                     <div class="container">

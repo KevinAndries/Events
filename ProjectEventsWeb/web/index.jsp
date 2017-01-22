@@ -67,23 +67,6 @@
             </form>
             <br>
             <table border="1" class="highlight" class="responsive-table">
-                <!--<th>ZaalID</th>
-                <th>Overzicht zalen</th>
-                <!--<th>Adres</th>
-                <th>Huinummer</th>
-                <th>Gemeente</th>
-                <th>Postcode</th>
-                <th>Email</th>
-                <th>Kenmerken</th>
-                <th>Faciliteiten</th>
-                <th>Tarieven</th>
-                <th>Capaciteit zittend</th>
-                <th>Capaciteit staand</th>
-                <th>Oppervlakte</th>
-                <th>Profiel</th>-->
-
-
-
                 <c:forEach items="${alleZalen}" var="za">
                     <tr>
                         <!--<td>${za.zaalId}</td>-->
@@ -111,33 +94,26 @@
                 <ul class="slides">
 
                     <li>
-                        <img src="Images/MartinushoeveLong.jpg"> <!-- random image -->
+                        <img src="Images/Profiel/MartinushoeveLongProfiel.jpg"> <!-- random image -->
                         <div class="caption center-align">
                             <h3>Martinushoeve</h3>
                             <h5 class="light grey-text text-lighten-3">Zandvliet</h5>
                         </div>
                     </li>
                     <li>
-                        <img src="Images/SlootjeshoeveLong.jpg""> <!-- random image -->
+                        <img src="Images/Profiel/LaSourceLongProfiel.jpg""> <!-- random image -->
                         <div class="caption left-align">
-                            <h3>Slootjeshoeve</h3>
-                            <h5 class="light grey-text text-lighten-3">Brasschaat</h5>
+                            <h3>La Source</h3>
+                            <h5 class="light grey-text text-lighten-3">Oevel</h5>
                         </div>
                     </li>
                     <li>
-                        <img src="Images/ParkWestLong.jpg""> <!-- random image -->
+                        <img src="Images/Profiel/ParkWestLongProfiel.jpg""> <!-- random image -->
                         <div class="caption right-align">
                             <h3>Park West</h3>
                             <h5 class="light grey-text text-lighten-3">Berchem</h5>
                         </div>
                     </li>
-                    <!--<li>
-                         <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image
-                         <div class="caption center-align">
-                             <h3>This is our big Tagline!</h3>
-                             <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                         </div>
-                     </li>-->
                 </ul>
                 <br>
                 <br>

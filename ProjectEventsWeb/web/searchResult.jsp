@@ -81,7 +81,7 @@
                 <table class="highlight" class="responsive-table">
                     <thead>
                         <tr>
-                            <th data-field="zaalid">ZAALID</th>
+                            <!--<th data-field="zaalid">ZAALID</th>-->
                             <th data-field="naam">NAAM</th>
                             <th data-field="adres">ADRES</th>
                             <th data-field="huisnummer">HUISNUMMER</th>
@@ -114,7 +114,7 @@
 
                     <tbody>
                         <tr>
-                          <td><%=zList.get(0)%></td>
+                          <!--<td><%=zList.get(0)%></td>-->
                         <td><%=zList.get(1)%></td>
                         <td><%=zList.get(2)%></td>
                         <td><%=zList.get(3)%></td>

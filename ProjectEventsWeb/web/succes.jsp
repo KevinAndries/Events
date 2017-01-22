@@ -127,8 +127,8 @@
                     <div class="col s12 m7">
                         <div class="card">
                             <!--<div class="card-image">
-                                <img src=<% z.getProfiel();%>></div>-->
-                                <span class="card-title">Verzonden</span>
+                                <img src=<% z.getProfiel();%>></div>
+                                <span class="card-title">Verzonden</span>-->
                             
                             <div class="card-content">
                                 <p>Uw aanvraag voor <%= z.getNaam()%> werd correct ontvangen. </p>
@@ -142,12 +142,6 @@
 
        
             </form>
-
-
-
-
-
-
         </div>
     </body>
 </html>
