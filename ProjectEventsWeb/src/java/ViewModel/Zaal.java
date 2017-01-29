@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//    Author     : Andries Kevin
 package ViewModel;
 
 import java.io.Serializable;
@@ -16,13 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
 
-/**
- *
- * @author andri
- */
 @Entity
 @Table
-//@PersistenceContext(unitName = "ProjectEventsWebPU")
 @NamedQueries(
         @NamedQuery(name = "Zaal.getAll", query = "SELECT z FROM Zaal z"))
 public class Zaal implements Serializable {
@@ -170,7 +161,7 @@ public class Zaal implements Serializable {
         this.profiel = profiel;
     }
 
-    public Zaal(int zaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, String kenmerken, String faciliteiten, double tarieven, int capZittend, int capStaand, int oppervlakte, String profiel) { // byte[] profiel) {
+    public Zaal(int zaalId, String naam, String adres, int huisnummer, String gemeente, int postcode, String email, String kenmerken, String faciliteiten, double tarieven, int capZittend, int capStaand, int oppervlakte, String profiel) {
         this.zaalId = zaalId;
         this.naam = naam;
         this.adres = adres;

@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Dec 4, 2016, 1:02:16 PM
-    Author     : andri
+    Author     : Andries Kevin
 --%>
 
 
@@ -21,39 +21,26 @@
 
 <html>
     <head>
-        <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="css/image.css"  media="screen,projection"/>
-        <!-- Enable media queries for old IE -->
-        <!--[if lt IE 9]>
-           <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-        <![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Zaalzoeker</title>
     </head>
     <body>
         <div class="container">
-            <!--Import jQuery before materialize.js-->
             <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
             <script type="text/javascript" src="js/materialize.min.js"></script>
-            <!--<h1>Zaal informatie</h1>-->
             <form action="ZaalServlet" method="POST">
 
-                <!--<div class="card-panel blue-grey lighten-2">-->
                 <nav>
                     <div class="nav-wrapper" >
                         <a href="#!" class="brand-logo"><i class="material-icons">polymer</i>Zaalinformatie</a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="../ProjectEventsWeb/search.jsp"><i class="material-icons">search</i></a></li>
-                            <!--<li><a href="../ProjectEventsWeb/ImagesServlet"><i class="material-icons">view_module</i></a></li>-->
                             <li><a href="../ProjectEventsWeb/ZaalServlet"><i class="material-icons">refresh</i></a></li>
-                            <!--<li><a href="index.jsp"><i class="material-icons">more_vert</i></a></li>-->
                             <li><a href="../ProjectEventsWeb/ZaalServlet"><i class="material-icons">home</i></a></li>
                         </ul>
                     </div>

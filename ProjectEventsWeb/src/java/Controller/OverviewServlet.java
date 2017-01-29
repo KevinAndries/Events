@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//    Author     : Andries Kevin
+
 package Controller;
 
 import DAL.zaal;
 import DAL.afbeelding;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,9 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "OverviewServlet", urlPatterns = {"/OverviewServlet"})
 public class OverviewServlet extends HttpServlet {
 
-    @EJB
-    //private ZaalDaoLocal zaalDao;
-    //private ZaalEJB zaalEJB;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,7 +30,6 @@ public class OverviewServlet extends HttpServlet {
                 long id = Long.parseLong(ZaaltmpId);
 
                 
-                //Map mapZalen = new HashMap();
                 List<zaal> lstZalen = (List<zaal>) request.getSession().getAttribute("zalen");
                 List<afbeelding> lstAfbeeldingen = (List<afbeelding>) request.getSession().getAttribute("afbeeldingen");
 
@@ -68,10 +59,6 @@ public class OverviewServlet extends HttpServlet {
             
             response.sendRedirect("overview.jsp");
         }
-
-//        request.setAttribute("zaal", zaal);
-//        request.setAttribute("alleZalen", zaalDao.getAllZalen());
-//        request.getRequestDispatcher("overview.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
+    Document   : Prijsofferte
     Created on : Dec 4, 2016, 1:02:16 PM
-    Author     : andri
+    Author     : Andries Kevin
 --%>
 
 

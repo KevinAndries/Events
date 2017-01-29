@@ -6,11 +6,7 @@
 package Controller;
 
 import DAL.zaal;
-import DAL.afbeelding;
-import Dao.ZaalDaoLocal;
 import EJB.ZaalEJB;
-import EJB.AfbeeldingEJB;
-import ViewModel.Zaal;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -20,14 +16,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.sql.*;
 
 @WebServlet(name = "ZaalServlet", urlPatterns = {"/ZaalServlet"})
 public class ZaalServlet extends HttpServlet {
 
     @EJB
-    //private ZaalDaoLocal zaalDao;
     private ZaalEJB zaalEJB;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -42,9 +35,6 @@ public class ZaalServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
         
-        //request.setAttribute("zaal", zaal);
-        //request.setAttribute("alleZalen", zaalDao.getAllZalen());
-        //request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

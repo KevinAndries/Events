@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//    Author     : Andries Kevin
+
 package Controller;
 
-import DAL.zaal;
 import EJB.ZaalEJB;
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import java.io.IOException;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,23 +15,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.text.Utilities;
+
 
 @WebServlet(name = "SearchServlet", urlPatterns = {"/SearchServlet"})
 public class SearchServlet extends HttpServlet {
 
     @EJB
-    //private ZaalDaoLocal zaalDao;
     private ZaalEJB zaalEJB;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
         Connection conn = null;
         String url = "jdbc:mysql://localhost:3307/";
         String dbName = "db_zalen";
@@ -47,7 +41,7 @@ public class SearchServlet extends HttpServlet {
             conn = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Connected!");
 
-            String zaalId = request.getParameter("zaalId");
+
             String naam = request.getParameter("naam");
             String adres = request.getParameter("adres");
             String gemeente = request.getParameter("gemeente");
@@ -60,10 +54,7 @@ public class SearchServlet extends HttpServlet {
 
             String query = "select * from zaal";
 
-//            if (zaalId != null && !zaalId.equals("")) {
-//                query = "select * from zaal where zaalId like '%" + zaalId + "%'";
-//            } else 
-                if (naam != null && !naam.equals("")) {
+            if (naam != null && !naam.equals("")) {
                 query = "select * from zaal where naam like '%" + naam + "%'";
             } else if (adres != null && !adres.equals("")) {
                 query = "select * from zaal where adres like '%" + adres + "%'";

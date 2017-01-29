@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//    Author     : Andries Kevin
+
 package Controller;
 
 import DAL.zaal;
-import DAL.afbeelding;
-import Dao.ZaalDaoLocal;
 import EJB.ZaalEJB;
-import EJB.AfbeeldingEJB;
-import ViewModel.Zaal;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -20,15 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.sql.*;
-import java.util.ArrayList;
+
 
 @WebServlet(name = "AanvraagPrijsOfferteServlet", urlPatterns = {"/AanvraagPrijsOfferteServlet"})
 public class AanvraagPrijsOfferteServlet extends HttpServlet {
 
     @EJB
-    //private ZaalDaoLocal zaalDao;
     private ZaalEJB zaalEJB;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +35,6 @@ public class AanvraagPrijsOfferteServlet extends HttpServlet {
 
                 long id = Long.parseLong(aanvraagPrijsOff);
 
-                //Map mapZalen = new HashMap();
                 List<zaal> lstZalen = (List<zaal>) request.getSession().getAttribute("zalen");
 
         
@@ -66,19 +55,6 @@ public class AanvraagPrijsOfferteServlet extends HttpServlet {
 
             response.sendRedirect("prijsOfferte.jsp");
         }
-//
-//        if (aanvraagPrijsOff != null && aanvraagPrijsOff.equals("conf")) {
-//            //response.sendRedirect("PrijsOfferte.jsp");
-//            RequestDispatcher rd = request.getRequestDispatcher("prijsOfferte.jsp");
-//            rd.forward(request, response);
-//
-//        }
-
-//        RequestDispatcher rd = request.getRequestDispatcher("succes.jsp");
-//        rd.forward(request, response);
-        //request.setAttribute("zaal", zaal);
-        //request.setAttribute("alleZalen", zaalDao.getAllZalen());
-        //request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
