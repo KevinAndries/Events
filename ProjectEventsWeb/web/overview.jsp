@@ -143,16 +143,17 @@
                             <li>
                                 <div class="collapsible-header"><i class="material-icons">shopping_basket</i>Tarief</div>
                                 <div class="collapsible-body"><p>Tarief: <%= z.getTarieven()%></p></div>
-                                <div class="collapsible-body"><p>offerte aanvragen</p></div>
+               
                             </li>
                             <li>
                                 <div class="collapsible-header" ><i class="material-icons">picture_in_picture</i>Afbeeldingen</div>
                                 <div class="collapsible-body"><p>
                                         <%
-                                            String[] selectedAfbeelding = {"Interieur", "Tuin", "Extra", "Extra2"};
+                                           // String[] selectedAfbeelding = {"Interieur", "Tuin", "Extra", "Extra2"};
                                         %>
-                                        <c:forEach var="afbeelding" items="${selectedAfbeelding}" >
-                                            <img src="${afbeelding.afbeelding}">
+                                        <c:forEach var="afbeelding" varStatus="loop" items="${selectedAfbeelding}" >
+                                            <img src="${afbeelding.afbeelding}"> 
+                                            <!--<a onclick="getafbeeldingIndex(${loop.index})" href="#">${afbeelding.afbeelding}</a>-->
                                         </c:forEach>
                                     </p></div>
                             </li>

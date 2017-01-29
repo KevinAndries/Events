@@ -131,7 +131,7 @@
                                 <span class="card-title">Verzonden</span>-->
                             
                             <div class="card-content">
-                                <p>Uw aanvraag voor <%= z.getNaam()%> werd correct ontvangen. </p>
+                                <font color="black"><p>Uw aanvraag voor <%= z.getNaam()%> werd correct ontvangen. </p></font>
                             </div>
                             <div class="card-action">
                                 <!--<a href="#">This is a link</a>-->

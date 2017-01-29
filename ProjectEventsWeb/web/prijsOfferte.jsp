@@ -118,7 +118,7 @@
 
 
             %>
-
+            <div class="container">
             <div class="row" >
 
                 <form action="AanvraagPrijsOfferteServlet" value="conf" name="aanvraagPrijsOfferte" method="post" class="col s12">

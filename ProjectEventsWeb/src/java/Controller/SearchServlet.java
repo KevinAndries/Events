@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.text.Utilities;
 
 @WebServlet(name = "SearchServlet", urlPatterns = {"/SearchServlet"})
 public class SearchServlet extends HttpServlet {
@@ -51,15 +52,18 @@ public class SearchServlet extends HttpServlet {
             String adres = request.getParameter("adres");
             String gemeente = request.getParameter("gemeente");
             String postcode = request.getParameter("postcode");
+            String capaciteit = request.getParameter("capaciteit");
+            String tarieven = request.getParameter("tarieven");
 
             ArrayList al = null;
             ArrayList zaalid_list = new ArrayList();
 
             String query = "select * from zaal";
 
-            if (zaalId != null && !zaalId.equals("")) {
-                query = "select * from zaal where zaalId like '%" + zaalId + "%'";
-            } else if (naam != null && !naam.equals("")) {
+//            if (zaalId != null && !zaalId.equals("")) {
+//                query = "select * from zaal where zaalId like '%" + zaalId + "%'";
+//            } else 
+                if (naam != null && !naam.equals("")) {
                 query = "select * from zaal where naam like '%" + naam + "%'";
             } else if (adres != null && !adres.equals("")) {
                 query = "select * from zaal where adres like '%" + adres + "%'";
@@ -67,6 +71,10 @@ public class SearchServlet extends HttpServlet {
                 query = "select * from zaal where gemeente  like'%" + gemeente + "%'";
             } else if (postcode != null && !postcode.equals("")) {
                 query = "select * from zaal where postcode like '%" + postcode + "%'";
+            }else if (capaciteit != null && !capaciteit.equals("")) {
+               query = "select * from zaal where capzittend < '" + capaciteit + "' and capstaand < '" + capaciteit + "'";
+            }else if (tarieven != null && !tarieven.equals("")) {
+                query = "select * from zaal where tarieven < '" + tarieven + "'";
             }
 
             System.out.println("query " + query);

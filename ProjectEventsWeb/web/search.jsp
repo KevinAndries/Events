@@ -63,45 +63,64 @@
                 <!-- </div>-->
                 <br>
                 <br>
-                <div class="nav-wrapper">
-                    <div class="input-field">
-                        <table>
-                            <br>
-                            <tr>
-                                <td ><b><font color="white">Zaal ID:</font></b>
-                                <td><input  type="text" name="zaalId" id="zaalId"></td>
-                            </tr>
-                            <td ><b><font color="white">Naam:</font></b>
-                            <td><input  type="text" name="naam" id="Naam"></td>
-                            </tr>
-                            <td ><b><font color="white">Adres:</font></b></td>
-                            <td><input  type="text" name="adres" id="Adres"></td>
-                            </tr>
-                            <p><td ><b><font color="white">Gemeente:</font></b></td>
-                            <td><input  type="text" name="gemeente" id="Gemeente"></td>
-                            </tr>
-                            <td ><b><font color="white">Postcode:</font></b></td>
-                            <td><input  type="text" name="postcode" id="Postcode"></td> 
-                            </tr>  
-                        </table>
-                       
-                        <input class="btn waves-effect waves-light" id="Search" type="submit" value="Search">
-                        <label for="search"><i class="material-icons">search</i></label>
-                        
+                <div class="container">
+                    <div class="container">
+                        <div class="container">
+                            <div class="nav-wrapper">
+
+                                <div class="input-field">
+                                    <table>
+                                        <br>
+                                        <br>
+                                        <!--<tr>
+                                            <td ><b><font color="white">Zaal ID:</font></b>
+                                            <td><input  type="text" name="zaalId" id="zaalId"></td>
+                                        </tr>-->
+                                        <tr>
+                                            <td ><b><font size="3" color="white">Naam:</font></b>
+                                            <td><input  type="text" name="naam" id="Naam"></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b><font size="3" color="white">Adres:</font></b></td>
+                                            <td><input  type="text" name="adres" id="Adres"></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b><font size="3" color="white">Gemeente:</font></b></td>
+                                            <td><input  type="text" name="gemeente" id="Gemeente"></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b><font size="3" color="white">Postcode:</font></b></td>
+                                            <td><input  type="text" name="postcode" id="Postcode"></td> 
+                                        </tr>  
+                                        <tr>                                                 
+                                            <td ><b><font size="3" color="white">Capaciteit:</font></b></td>
+                                            <td><input  type="text" name="capaciteit" id="Capaciteit"></td> 
+                                        </tr>  
+                                        <tr>                                                    
+                                            <td ><b><font size="3" color="white">Tarieven:</font></b></td>
+                                            <td><input  type="text" name="tarieven" id="Tarieven"></td> 
+                                        </tr>  
+                                    </table>
+
+                                    <input class="btn waves-effect waves-light" id="Search" type="submit" value="Search">
+                                    <label for="search"><i class="material-icons">search</i></label>
+
+                                </div>
+                            </div>
+                            <%
+                                Scanner sc = new Scanner(System.in);
+
+
+                            %>
+
+
+                            </form>
+                        </div>
                     </div>
+                    <br>
+                    <table border="1" class="highlight" class="responsive-table">
+                    </table>
                 </div>
-                <%
-                    Scanner sc = new Scanner(System.in);
-
-
-                %>
-
-
-            </form>
-            <br>
-            <table border="1" class="highlight" class="responsive-table">
-            </table>
-        </div>
 
 
 
@@ -121,29 +140,29 @@
 
 
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/materialize.min.js"></script>
+                <script src="js/jquery.min.js"></script>
+                <script src="js/materialize.min.js"></script>
 
-        <script>
-            $(document).ready(function () {
-                $('.slider').slider();
-                $('.materialboxed').materialbox();
-            });
-            $(function () {
-                // See if this is a touch device
-                if ('ontouchstart' in window)
-                {
-                    // Set the correct [touchscreen] body class
-                    $('body').removeClass('no-touch').addClass('touch');
-
-                    // Add the touch toggle to show text when tapped
-                    $('div.boxInner img').click(function () {
-                        $(this).closest('.boxInner').toggleClass('touchFocus');
+                <script>
+                    $(document).ready(function () {
+                        $('.slider').slider();
+                        $('.materialboxed').materialbox();
                     });
-                }
-            });
+                    $(function () {
+                        // See if this is a touch device
+                        if ('ontouchstart' in window)
+                        {
+                            // Set the correct [touchscreen] body class
+                            $('body').removeClass('no-touch').addClass('touch');
 
-        </script>
-    </div>
-</body>
+                            // Add the touch toggle to show text when tapped
+                            $('div.boxInner img').click(function () {
+                                $(this).closest('.boxInner').toggleClass('touchFocus');
+                            });
+                        }
+                    });
+
+                </script>
+        </div>
+    </body>
 </html>

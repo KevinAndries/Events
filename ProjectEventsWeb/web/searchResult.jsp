@@ -78,7 +78,7 @@
             <body>
                 <br>
                 <br>
-                <table class="highlight" class="responsive-table">
+                <table class="bordered" class="responsive-table">
                     <thead>
                         <tr>
                             <!--<th data-field="zaalid">ZAALID</th>-->
@@ -105,7 +105,7 @@
                                 while (itr.hasNext()) {
 
                                     if ((count % 2) == 0) {
-                                        color = "#eeffee";
+                                        color = "#9D9566";
                                     }
                                     count++;
                                     ArrayList zList = (ArrayList) itr.next();
@@ -137,7 +137,7 @@
                     %>
                     <tr>
                         <td colspan=4 align="center"
-                            style="background-color:#eeffee"><b>No Record Found..</b></td>
+                            style="background-color:#9D9566"><b>No Record Found..</b></td>
                     </tr>
                     <%            }
                     %> 
