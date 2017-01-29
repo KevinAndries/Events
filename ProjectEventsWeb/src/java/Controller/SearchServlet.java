@@ -103,95 +103,11 @@ public class SearchServlet extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     * 
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
-//        String action = request.getParameter("action");
-//        String zaalIdStr = request.getParameter("zaalId");
-//        //int zaalId = zaalIdStr.equals("") ? 0 : Integer.parseInt(zaalIdStr);
-//        int zaalId = 0;
-//        if (zaalIdStr != null && !zaalIdStr.equals("")) {
-//            zaalId = Integer.parseInt(zaalIdStr);
-//        }
-//
-//        String naam = request.getParameter("naam");
-//        String huisnummerStr = request.getParameter("huisnummer");
-//        //int huisnummer = huisnummerStr.equals("") ? 0 : Integer.parseInt(huisnummerStr);
-//        int huisnummer = 0;
-//        if (huisnummerStr != null && !huisnummerStr.equals("")) {
-//            huisnummer = Integer.parseInt(huisnummerStr);
-//        }
-//
-//        String gemeente = request.getParameter("gemeente");
-//        String postcodeStr = request.getParameter("postcode");
-//        //int postcode = postcodeStr.equals("") ? 0 : Integer.parseInt(postcodeStr);
-//        int postcode = 0;
-//        if (postcodeStr != null && !postcodeStr.equals("")) {
-//            postcode = Integer.parseInt(postcodeStr);
-//        }
-//
-//        String email = request.getParameter("email");
-//        String kenmerken = request.getParameter("kenmerken");
-//        String faciliteiten = request.getParameter("faciliteiten");
-//        String tarievenStr = request.getParameter("tarieven");
-//        //double tarieven = tarievenStr.equals("") ? 0 : Integer.parseInt(tarievenStr);
-//        double tarieven = 0;
-//        if (tarievenStr != null && !tarievenStr.equals("")) {
-//            tarieven = Double.parseDouble(tarievenStr);
-//        }
-//        String capZittendStr = request.getParameter("capaciteit zittend");
-//        int capZittend = 0;
-//        if (capZittendStr != null && !capZittendStr.equals("")) {
-//            capZittend = Integer.parseInt(capZittendStr);
-//        }
-//        String capStaandStr = request.getParameter("capaciteit staand");
-//        int capStaand = 0;
-//        if (capStaandStr != null && !capStaandStr.equals("")) {
-//            capStaand = Integer.parseInt(capStaandStr);
-//        }
-//        String oppervlakteStr = request.getParameter("oppervlakte");
-//        int oppervlakte = 0;
-//        if (oppervlakteStr != null && !oppervlakteStr.equals("")) {
-//            oppervlakte = Integer.parseInt(oppervlakteStr);
-//        }
-//
-//List<zaal> alleZalen = zaalEJB.getAlleZalen();
-//        
-//        request.getSession().setAttribute("zalen", alleZalen);
-//        
-//        RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
-//        rd.forward(request, response);
-//        
-    //request.setAttribute("zaal", zaal);
-    //request.setAttribute("alleZalen", zaalDao.getAllZalen());
-    //request.getRequestDispatcher("index.jsp").forward(request, response);
-//            @EJB
-//    private ZaalDaoLocal zaalDao;
-//    private ZaalEJB zaalEJB;
-//    private AfbeeldingEJB afbeeldingEJB;
-//                Zaal zaal = new Zaal(zaalId, naam, email, huisnummer, gemeente, postcode, email, kenmerken, faciliteiten, tarieven, capZittend, capStaand, oppervlakte); //, profiel);
-//
-//        if ("Toevoegen".equalsIgnoreCase(action)) {
-//            zaalDao.toevoegenZaal(zaal);
-//
-//        } else if ("Wijzigen".equalsIgnoreCase(action)) {
-//            zaalDao.wijzigenZaal(zaal);
-//
-//        } else if ("Verwijderen".equalsIgnoreCase(action)) {
-//            zaalDao.verwijderenZaal(zaalId);
-//
-//        } else if ("Zoeken".equalsIgnoreCase(action)) {
-//            zaal = zaalDao.getZaal(zaalId);
-//        }
-//        
-    // }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
