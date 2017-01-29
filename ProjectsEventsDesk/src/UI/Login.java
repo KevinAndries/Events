@@ -5,6 +5,7 @@
  */
 package UI;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -14,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 /**
@@ -27,6 +30,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
 
     }
 
@@ -85,6 +89,12 @@ public class Login extends javax.swing.JFrame {
 
         lblPassword.setText("Password : ");
 
+        pwfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwfPasswordKeyPressed(evt);
+            }
+        });
+
         ckbPassword.setText("Show password");
         ckbPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +106,11 @@ public class Login extends javax.swing.JFrame {
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
             }
         });
 
@@ -215,6 +230,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
+ 
+        
         Connection connection;
         PreparedStatement ps;
         try {
@@ -224,12 +241,17 @@ public class Login extends javax.swing.JFrame {
             ps.setString(2, String.valueOf(pwfPassword.getPassword()));
 
             ResultSet result = ps.executeQuery();
+            
+
 
             if (result.next()) {
                 LblLoginMessage.setText("Login succesvol");
                 btnLoginOK.setVisible(true);
                 btnWrong.setVisible(false);
                 timer1.start();
+                Mainframe mfr = new Mainframe();
+                mfr.setVisible(true);
+                this.dispose();
 
             } else {
                 LblLoginMessage.setText("Ongeldige gebruikersnaam of paswoord");
@@ -247,10 +269,10 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginOKActionPerformed
 
-        timer2.start();
-        Mainframe mfr = new Mainframe();
-        mfr.setVisible(true);
-        this.dispose();
+//        timer2.start();
+//        Mainframe mfr = new Mainframe();
+//        mfr.setVisible(true);
+//        this.dispose();
      
 
 
@@ -262,6 +284,83 @@ public class Login extends javax.swing.JFrame {
         lfr.setVisible(true);
         
     }//GEN-LAST:event_btnWrongActionPerformed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+             
+        
+        Connection connection;
+        PreparedStatement ps;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
+            ps = connection.prepareStatement("SELECT `username`, `password` FROM `tbl_users` WHERE `username` =? AND `password` =?");
+            ps.setString(1, txtUsername.getText());
+            ps.setString(2, String.valueOf(pwfPassword.getPassword()));
+
+            ResultSet result = ps.executeQuery();
+            
+
+
+            if (result.next()) {
+                LblLoginMessage.setText("Login succesvol");
+                btnLoginOK.setVisible(true);
+                btnWrong.setVisible(false);
+                timer1.start();
+                Mainframe mfr = new Mainframe();
+                mfr.setVisible(true);
+                this.dispose();
+
+            } else {
+                LblLoginMessage.setText("Ongeldige gebruikersnaam of paswoord");
+                btnWrong.setVisible(true);
+                btnLoginOK.setVisible(false);
+                timer1.start();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void pwfPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwfPasswordKeyPressed
+        
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+             
+        
+        Connection connection;
+        PreparedStatement ps;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
+            ps = connection.prepareStatement("SELECT `username`, `password` FROM `tbl_users` WHERE `username` =? AND `password` =?");
+            ps.setString(1, txtUsername.getText());
+            ps.setString(2, String.valueOf(pwfPassword.getPassword()));
+
+            ResultSet result = ps.executeQuery();
+            
+
+
+            if (result.next()) {
+                LblLoginMessage.setText("Login succesvol");
+                btnLoginOK.setVisible(true);
+                btnWrong.setVisible(false);
+                timer1.start();
+                Mainframe mfr = new Mainframe();
+                mfr.setVisible(true);
+                this.dispose();
+
+            } else {
+                LblLoginMessage.setText("Ongeldige gebruikersnaam of paswoord");
+                btnWrong.setVisible(true);
+                btnLoginOK.setVisible(false);
+                timer1.start();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_pwfPasswordKeyPressed
 
     /**
      * @param args the command line arguments
