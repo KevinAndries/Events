@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Andries Kevin
  */
 package UI;
 
@@ -17,10 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author andri
- */
+
 public class NewZaal extends javax.swing.JFrame {
 
     ZaalService service = new ZaalService();
@@ -32,36 +28,7 @@ public class NewZaal extends javax.swing.JFrame {
 
     }
 
-//    private void Opslaan() {
-//        try {
-//            FileInputStream fis = null;
-//            File img = null;
-//
-//            img = new File(path);
-//            fis = new FileInputStream(img);
-//
-//            if (new DaZalen().ToevoegenFoto(img, fis)) {
-//                JOptionPane.showMessageDialog(null, "Opslaan succesvol");
-//                //lblFoto.setIcon(icon);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Opslaan onsuccesvol");
-//            }
-//
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//    }
-//
-//    private void Ophalen() {
-//        String AfbeeldingId = new DaZalen().OphalenFoto();
-//
-//        if (!AfbeeldingId.equals("-1")) {
-//            JOptionPane.showMessageDialog(null, "Succesvol opgehaald");
-//        } else {
-//            JOptionPane.showMessageDialog(null, "ONSuccesvol opgehaald");
-//        }
-//    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -377,24 +344,8 @@ public class NewZaal extends javax.swing.JFrame {
         Zaal zaal = new Zaal();
 
         FileDialog fd = new FileDialog(this);
-        fd.show();
-//           
+        fd.show();        
         path = fd.getDirectory() + fd.getFile();
-//            
-//            
-//            ps.setString(1, "Images/Zalen/" + fd.getFile());
-//            ps.setInt(2, zaal.getZaalId());
-//            int rs = ps.executeUpdate();
-//
-//            if (path.endsWith("nullnull")) {
-//                JOptionPane.showMessageDialog(null, "Er werd geen afbeelding geselecteerd");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Afbeelding werd toegevoegd");
-//            }
-//
-//       } catch (Exception e) {
-//            System.out.println(e);
-//        }
 
         BufferedImage img;
         try {
@@ -405,30 +356,6 @@ public class NewZaal extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-//        try {
-//
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
-//            PreparedStatement ps = conn.prepareStatement("INSERT INTO afbeelding(Afbeelding,ZaalId) VALUES (?,?)");
-//            FileDialog fd = new FileDialog(this);
-//            fd.show();
-//
-//            path = fd.getDirectory() + fd.getFile();
-//
-//            ps.setString(1, "Images/Zalen/" + fd.getFile());
-//            ps.setInt(2, zaal.getZaalId());
-//            int rs = ps.executeUpdate();
-//
-//            if (path.endsWith("nullnull")) {
-//                JOptionPane.showMessageDialog(null, "Er werd geen afbeelding geselecteerd");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Afbeelding werd toegevoegd");
-//            }
-//
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
     }//GEN-LAST:event_btnOpslaanFotoActionPerformed
 
     private void txtAdresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdresActionPerformed

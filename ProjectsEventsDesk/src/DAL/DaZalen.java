@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author andri
+ * @author Andries Kevin
  */
 public class DaZalen {
 
@@ -66,33 +66,32 @@ public class DaZalen {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zalen", "root", "usbw");
             ps = conn.prepareStatement(sql);
-            
+
             ResultSet rs = ps.executeQuery();
             rs.last();
-            
+
             Blob b = rs.getBlob("Image");
             String AFBEELDINGID = rs.getString("AfbeeldingId");
-            
+
             fos = new FileOutputStream("D://Imgs/" + AFBEELDINGID + ".jpg");
-            
+
             int len = (int) b.length();
             byte[] buf = b.getBytes(1, len);
-            
-            fos.write(buf,0,len);
-            
+
+            fos.write(buf, 0, len);
+
             return AFBEELDINGID;
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DaZalen.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DaZalen.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(DaZalen.class.getName()).log(Level.SEVERE, null, ex);
-        }     
+        }
         return "-1";
-}
+    }
 
     public ArrayList<Zaal> getAll() {
 
@@ -103,9 +102,7 @@ public class DaZalen {
             Statement stmt;
 
             stmt = conn.createStatement();
-            //String sqlGegevens = "SELECT * FROM tbl_gegevens INNER JOIN tbl_capaciteit ON tbl_gegevens.ID = tbl_capaciteit.GegevensID";
             String sqlGegevens = "SELECT * FROM zaal";
-            //String sqlGegevens = "SELECT * FROM zaal INNER JOIN afbeelding ON zaal.ZaalId = afbeelding.ZaalId";
             ResultSet rs = stmt.executeQuery(sqlGegevens);
             while (rs.next()) {
                 Zaal zaal = new Zaal();
@@ -119,15 +116,10 @@ public class DaZalen {
                 zaal.setKenmerken(rs.getString("kenmerken"));
                 zaal.setFaciliteiten(rs.getString("faciliteiten"));
                 zaal.setTarieven(rs.getDouble("tarieven"));
-
                 zaal.setCapZittend(rs.getInt("capZittend"));
                 zaal.setCapStaand(rs.getInt("capStaand"));
                 zaal.setOppervlakte(rs.getInt("Oppervlakte"));
-                
                 zaal.setProfiel(rs.getString("Profiel"));
-                
-                
-
                 result.add(zaal);
             }
 
@@ -143,7 +135,6 @@ public class DaZalen {
         try {
             Connection conn = GetConnection();
             String sql = "";
-            String sql2 = "";
             Statement stmt;
 
             stmt = conn.createStatement();
@@ -159,32 +150,18 @@ public class DaZalen {
                 System.out.println(result);
                 stmt = conn.createStatement();
 
-//                sql2 = "INSERT INTO tbl_capaciteit(CapaciteitZittend,CapaciteitStaand,Oppervlakte,GegevensID) VALUES (" + zaal.getCapZittend() + "," + zaal.getCapStaand() + "," + zaal.getOppervlakte() + ",(SELECT ID FROM tbl_gegevens ORDER BY ID DESC LIMIT 1)" + ");";
-//
-//                int result2 = stmt.executeUpdate(sql2);
-//
-//                System.out.println(result2);
-//                stmt = conn.createStatement();
                 JOptionPane.showMessageDialog(null, "Er is een insert gebeurd");
 
             } else {
 
                 sql = "UPDATE zaal SET Naam='" + zaal.getNaam() + "',Adres='" + zaal.getAdres() + "',Huisnummer=" + zaal.getHuisnummer() + ",Gemeente='" + zaal.getGemeente() + "',Postcode=" + zaal.getPostcode() + ",Email='" + zaal.getEmail() + "',Kenmerken='"
                         + zaal.getKenmerken() + "',Faciliteiten='" + zaal.getFaciliteiten() + "',Tarieven=" + zaal.getTarieven() + ",CapZittend=" + zaal.getCapZittend() + ",CapStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + ",Profiel='" + zaal.getProfiel() + "' WHERE ZaalId=" + zaal.getZaalId() + ";";
-                //+ "UPDATE tbl_capaciteit SET CapaciteitZittend=" + zaal.getCapaciteitZittend() + ",CapaciteitStaand=" + zaal.getCapaciteitStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + " WHERE GegevensID=" + zaal.getID() + "; Commit;";
 
                 int resultUp = stmt.executeUpdate(sql);
 
                 System.out.println(resultUp);
                 stmt = conn.createStatement();
 
-//                sql2 = "UPDATE tbl_capaciteit SET CapaciteitZittend=" + zaal.getCapZittend() + ",CapaciteitStaand=" + zaal.getCapStaand() + ",Oppervlakte=" + zaal.getOppervlakte() + " WHERE GegevensID=" + zaal.getZaalId() + ";";
-//                //sql2 = "UPDATE tbl_capaciteit SET CapaciteitZittend=?,CapaciteitStaand=?,Oppervlakte=? WHERE GegevensID=?;";//  (SELECT ID FROM tbl_gegevens ORDER BY ID DESC LIMIT 1)" + ");";
-//
-//                int resultUp2 = stmt.executeUpdate(sql2);
-//
-//                System.out.println(resultUp2);
-//                stmt = conn.createStatement();
                 JOptionPane.showMessageDialog(null, "Er is een update gebeurd");
 
             }
@@ -199,7 +176,6 @@ public class DaZalen {
 
         try {
             Connection conn = GetConnection();
-            String sql = "";
             String sql2 = "";
             Statement stmt;
 
@@ -207,12 +183,6 @@ public class DaZalen {
 
             if (zaal.getZaalId() != 0) {
 
-//                sql = "DELETE FROM tbl_capaciteit WHERE GegevensID=" + zaal.getZaalId() + ";";
-//
-//                int resultDel = stmt.executeUpdate(sql);
-//                System.out.println(resultDel);
-//
-//                stmt = conn.createStatement();
                 sql2 = "DELETE FROM zaal WHERE ZaalId=" + zaal.getZaalId() + ";";
 
                 int resultDel2 = stmt.executeUpdate(sql2);
