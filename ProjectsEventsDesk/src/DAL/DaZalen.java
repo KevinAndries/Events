@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import BO.Afbeelding;
 import BO.Zaal;
 import java.io.File;
 import java.io.FileInputStream;
@@ -121,6 +122,31 @@ public class DaZalen {
                 zaal.setOppervlakte(rs.getInt("Oppervlakte"));
                 zaal.setProfiel(rs.getString("Profiel"));
                 result.add(zaal);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return result;
+
+    }
+    
+        public ArrayList<Afbeelding> getAllAfbeelding() {
+
+        ArrayList<Afbeelding> result = new ArrayList<>();
+
+        try {
+            Connection conn = GetConnection();
+            Statement stmt;
+
+            stmt = conn.createStatement();
+            String sqlGegevens = "SELECT * FROM afbeelding";
+            ResultSet rs = stmt.executeQuery(sqlGegevens);
+            while (rs.next()) {
+                Afbeelding afbeelding = new Afbeelding();
+                afbeelding.setAfbeeldingid(rs.getInt("afbeeldingId"));
+                afbeelding.setAfbeelding(rs.getString("afbeelding"));
+                result.add(afbeelding);
             }
 
         } catch (SQLException ex) {

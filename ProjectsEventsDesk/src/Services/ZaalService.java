@@ -5,6 +5,7 @@
  */
 package Services;
 
+import BO.Afbeelding;
 import BO.Zaal;
 import DAL.DaZalen;
 import java.util.List;
@@ -20,6 +21,10 @@ public class ZaalService {
     public List<Zaal> getAllZaal() {
         
         return da.getAll();
+    }
+        public List<Afbeelding> getAllAfbeeldingen() {
+        
+        return da.getAllAfbeelding();
     }
     
     public void UpdateZaal(int ID, Zaal zaal) {
