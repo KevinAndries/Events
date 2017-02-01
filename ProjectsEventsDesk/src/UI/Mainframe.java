@@ -5,6 +5,7 @@
 package UI;
 
 import BO.Zaal;
+import BO.Afbeelding;
 import Services.ZaalService;
 import java.awt.FileDialog;
 import java.awt.image.BufferedImage;
@@ -39,6 +40,9 @@ public class Mainframe extends javax.swing.JFrame {
         jPanelUp.setVisible(false);
         btnWijzigen.setVisible(false);
         btnToevoegenFoto.setVisible(false);
+        btnVerwijderenFoto.setVisible(false);
+        lstbAfbeeldingen.setVisible(false);
+        jLabelAfbeelding.setVisible(false);
     }
 
 
@@ -80,6 +84,10 @@ public class Mainframe extends javax.swing.JFrame {
         lblPostcodeUp = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
         btnToevoegenFoto = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstbAfbeeldingen = new javax.swing.JList<>();
+        jLabelAfbeelding = new javax.swing.JLabel();
+        btnVerwijderenFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -277,24 +285,43 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
+        lstbAfbeeldingen.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        lstbAfbeeldingen.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstbAfbeeldingenValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(lstbAfbeeldingen);
+
+        btnVerwijderenFoto.setText("Foto's verwijderen");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(btnToevoegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVerwijderen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnToevoegen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerwijderen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelUp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnWijzigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnWijzigen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVerwijderenFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -307,7 +334,8 @@ public class Mainframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVerwijderen)
-                    .addComponent(btnToevoegenFoto))
+                    .addComponent(btnToevoegenFoto)
+                    .addComponent(btnVerwijderenFoto))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,6 +343,10 @@ public class Mainframe extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jLabelAfbeelding, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -360,6 +392,7 @@ public class Mainframe extends javax.swing.JFrame {
             zaal.setProfiel(zaal.getProfiel());
             
             service.UpdateZaal(zaal.getZaalId(), zaal);
+            
         }
     }//GEN-LAST:event_btnWijzigenActionPerformed
 
@@ -375,8 +408,17 @@ public class Mainframe extends javax.swing.JFrame {
         jPanelUp.setVisible(true);
         btnWijzigen.setVisible(true);
         btnToevoegenFoto.setVisible(true);
+        btnVerwijderenFoto.setVisible(true);
+        lstbAfbeeldingen.setVisible(true);
+        jLabelAfbeelding.setVisible(true);
+
+        
+        
+        
+        
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
+    
 
         if (zaal != null) {
 
@@ -392,6 +434,8 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
+            
+            
 
             BufferedImage img;
             try {
@@ -459,6 +503,10 @@ public class Mainframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lstbZalenMouseClicked
 
+    private void lstbAfbeeldingenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstbAfbeeldingenValueChanged
+ 
+    }//GEN-LAST:event_lstbAfbeeldingenValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -498,11 +546,14 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JButton btnToevoegen;
     private javax.swing.JButton btnToevoegenFoto;
     private javax.swing.JButton btnVerwijderen;
+    private javax.swing.JButton btnVerwijderenFoto;
     private javax.swing.JButton btnWijzigen;
+    private javax.swing.JLabel jLabelAfbeelding;
     private javax.swing.JPanel jPanelUp;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblAdresUp;
     private javax.swing.JLabel lblCapStaandUp;
     private javax.swing.JLabel lblCapZittendUp;
@@ -516,6 +567,7 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel lblOppervlakteUp;
     private javax.swing.JLabel lblPostcodeUp;
     private javax.swing.JLabel lblTarievenUp;
+    private javax.swing.JList<String> lstbAfbeeldingen;
     private javax.swing.JList lstbZalen;
     private javax.swing.JTextField txtAdresUp;
     private javax.swing.JTextField txtCapStaandUp;

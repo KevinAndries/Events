@@ -98,12 +98,14 @@ public class DaZalen {
 
         ArrayList<Zaal> result = new ArrayList<>();
 
+
         try {
             Connection conn = GetConnection();
             Statement stmt;
 
             stmt = conn.createStatement();
             String sqlGegevens = "SELECT * FROM zaal";
+            
             ResultSet rs = stmt.executeQuery(sqlGegevens);
             while (rs.next()) {
                 Zaal zaal = new Zaal();
@@ -120,8 +122,9 @@ public class DaZalen {
                 zaal.setCapZittend(rs.getInt("capZittend"));
                 zaal.setCapStaand(rs.getInt("capStaand"));
                 zaal.setOppervlakte(rs.getInt("Oppervlakte"));
-                zaal.setProfiel(rs.getString("Profiel"));
+                zaal.setProfiel(rs.getString("Profiel")); 
                 result.add(zaal);
+
             }
 
         } catch (SQLException ex) {
@@ -133,26 +136,30 @@ public class DaZalen {
     
         public ArrayList<Afbeelding> getAllAfbeelding() {
 
-        ArrayList<Afbeelding> result = new ArrayList<>();
+        ArrayList<Afbeelding> resultAfbeelding = new ArrayList<>();
 
         try {
             Connection conn = GetConnection();
             Statement stmt;
 
             stmt = conn.createStatement();
-            String sqlGegevens = "SELECT * FROM afbeelding";
+            String sqlGegevens = "SELECT afbeelding.afbeeldingid, afbeelding.zaalid, afbeelding.afbeelding FROM `afbeelding` inner join zaal on afbeelding.zaalid = zaal.zaalid";
+            
             ResultSet rs = stmt.executeQuery(sqlGegevens);
             while (rs.next()) {
+
                 Afbeelding afbeelding = new Afbeelding();
                 afbeelding.setAfbeeldingid(rs.getInt("afbeeldingId"));
-                afbeelding.setAfbeelding(rs.getString("afbeelding"));
-                result.add(afbeelding);
+                afbeelding.setAfbeelding(rs.getString("afbeelding"));     
+                afbeelding.setZaalid(rs.getString("zaalid"));
+                resultAfbeelding.add(afbeelding);
             }
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return result;
+        return resultAfbeelding;
+
 
     }
 

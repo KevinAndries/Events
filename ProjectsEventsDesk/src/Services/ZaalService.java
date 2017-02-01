@@ -15,30 +15,31 @@ import java.util.List;
  * @author andri
  */
 public class ZaalService {
-    
+
     private final DaZalen da = new DaZalen();
-    
+
     public List<Zaal> getAllZaal() {
-        
+
         return da.getAll();
     }
-        public List<Afbeelding> getAllAfbeeldingen() {
-        
-        return da.getAllAfbeelding();
-    }
-    
+
+//    public List<Afbeelding> getAllAfbeeldingen() {
+//
+//        return da.getAllAfbeelding();
+//    }
+
     public void UpdateZaal(int ID, Zaal zaal) {
         DaZalen.ZaalToevoegen(zaal);
     }
-    
-    public void SaveZaal (Zaal zaal) {
-        
+
+    public void SaveZaal(Zaal zaal) {
+
         DaZalen.ZaalToevoegen(zaal);
     }
-    
-    public void DeleteZaal (Zaal zaal) {
-        
+
+    public void DeleteZaal(Zaal zaal) {
+
         DaZalen.ZaalVerwijderen(zaal);
     }
-    
+
 }
