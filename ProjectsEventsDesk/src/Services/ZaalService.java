@@ -42,5 +42,9 @@ public class ZaalService {
 
         DaZalen.ZaalVerwijderen(zaal);
     }
+    
+    public void DeleteAfbeelding (Afbeelding a) {
+        DaZalen.AfbeeldingVerwijderen(a);
+    }
 
 }

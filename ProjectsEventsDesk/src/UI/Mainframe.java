@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class Mainframe extends javax.swing.JFrame {
 
     ZaalService service = new ZaalService();
@@ -44,9 +43,8 @@ public class Mainframe extends javax.swing.JFrame {
         btnToevoegenFoto.setVisible(false);
         btnVerwijderenFoto.setVisible(false);
         lstbAfbeeldingen.setVisible(false);
-        jLabelAfbeelding.setVisible(false);
+        lblAfbeelding.setVisible(false);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +86,7 @@ public class Mainframe extends javax.swing.JFrame {
         btnToevoegenFoto = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         lstbAfbeeldingen = new javax.swing.JList();
-        jLabelAfbeelding = new javax.swing.JLabel();
+        lblAfbeelding = new javax.swing.JLabel();
         btnVerwijderenFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -209,7 +207,7 @@ public class Mainframe extends javax.swing.JFrame {
                                 .addGroup(jPanelUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblHuisnummerUp)
                                     .addComponent(lblPostcodeUp))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 45, Short.MAX_VALUE)
                                 .addGroup(jPanelUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtHuisnummerUp, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPostcodeUp, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -313,13 +311,13 @@ public class Mainframe extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnToevoegen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVerwijderen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerwijderen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
+                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -328,7 +326,9 @@ public class Mainframe extends javax.swing.JFrame {
                         .addComponent(btnToevoegenFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVerwijderenFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabelAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -351,10 +351,10 @@ public class Mainframe extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jLabelAfbeelding, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -397,9 +397,9 @@ public class Mainframe extends javax.swing.JFrame {
             zaal.setOppervlakte(Integer.parseInt(txtOppervlakteUp.getText()));
             zaal.setTarieven(Double.parseDouble(txtTarievenUp.getText()));
             zaal.setProfiel(zaal.getProfiel());
-            
+
             service.UpdateZaal(zaal.getZaalId(), zaal);
-            
+
         }
     }//GEN-LAST:event_btnWijzigenActionPerformed
 
@@ -407,6 +407,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
         service.DeleteZaal(zaal);
+
 
     }//GEN-LAST:event_btnVerwijderenActionPerformed
 
@@ -417,15 +418,9 @@ public class Mainframe extends javax.swing.JFrame {
         btnToevoegenFoto.setVisible(true);
         btnVerwijderenFoto.setVisible(true);
         lstbAfbeeldingen.setVisible(true);
-        jLabelAfbeelding.setVisible(true);
-
-        
-        
-        
-        
+        lblAfbeelding.setVisible(true);
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
-    
 
         if (zaal != null) {
 
@@ -451,20 +446,11 @@ public class Mainframe extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        
-            
-if (zaal != null) {
 
         }
         List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
-        lstbAfbeeldingen.setListData(afbeeldingen.toArray()); 
+        lstbAfbeeldingen.setListData(afbeeldingen.toArray());
 
-
-            
-            
-        }
     }//GEN-LAST:event_lstbZalenValueChanged
 
     private void txtPostcodeUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostcodeUpActionPerformed
@@ -498,10 +484,9 @@ if (zaal != null) {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO afbeelding(Afbeelding,ZaalId) VALUES (?,?)");
             FileDialog fd = new FileDialog(this);
             fd.show();
-           
+
             path = fd.getDirectory() + fd.getFile();
-            
-            
+
             ps.setString(1, "Images/Zalen/" + fd.getFile());
             ps.setInt(2, zaal.getZaalId());
             int rs = ps.executeUpdate();
@@ -512,7 +497,7 @@ if (zaal != null) {
                 JOptionPane.showMessageDialog(null, "Afbeelding werd toegevoegd");
             }
 
-       } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnToevoegenFotoActionPerformed
@@ -522,24 +507,37 @@ if (zaal != null) {
     }//GEN-LAST:event_lstbZalenMouseClicked
 
     private void lstbAfbeeldingenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstbAfbeeldingenValueChanged
-         
-//        Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
-//
-//        if (zaal != null) {
-//
-//        }
-//        lstbAfbeeldingen.setListData((String[]) service.getAllAfbeeldingen(zaal).toArray());
-         
-        
-        
-        
-                
-             
+
+        jPanelUp.setVisible(true);
+        btnWijzigen.setVisible(true);
+        btnToevoegenFoto.setVisible(true);
+        btnVerwijderenFoto.setVisible(true);
+        lstbAfbeeldingen.setVisible(true);
+        lblAfbeelding.setVisible(true);
+
+        Afbeelding afbeelding = (Afbeelding) lstbAfbeeldingen.getSelectedValue();
+
+        if (afbeelding != null) {
+
+            BufferedImage img;
+            try {
+                img = ImageIO.read(new File("C:\\Users\\andri\\Desktop\\Programmeren 4 project thuis\\SVN GitHub\\ProjectsEventsDesk\\" + afbeelding.getAfbeelding()));
+                ImageIcon icon = new ImageIcon(img);
+                lblAfbeelding.setIcon(icon);
+
+            } catch (IOException ex) {
+                Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
     }//GEN-LAST:event_lstbAfbeeldingenValueChanged
 
     private void btnVerwijderenFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenFotoActionPerformed
-        
-        
+
+        Afbeelding afbeelding = (Afbeelding) lstbAfbeeldingen.getSelectedValue();
+        service.DeleteAfbeelding(afbeelding);
+
     }//GEN-LAST:event_btnVerwijderenFotoActionPerformed
 
     /**
@@ -583,13 +581,13 @@ if (zaal != null) {
     private javax.swing.JButton btnVerwijderen;
     private javax.swing.JButton btnVerwijderenFoto;
     private javax.swing.JButton btnWijzigen;
-    private javax.swing.JLabel jLabelAfbeelding;
     private javax.swing.JPanel jPanelUp;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblAdresUp;
+    private javax.swing.JLabel lblAfbeelding;
     private javax.swing.JLabel lblCapStaandUp;
     private javax.swing.JLabel lblCapZittendUp;
     private javax.swing.JLabel lblEmailUp;

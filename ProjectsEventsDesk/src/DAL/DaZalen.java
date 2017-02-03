@@ -236,6 +236,40 @@ public class DaZalen {
         }
 
     }
+    
+    
+    
+    
+        public static void AfbeeldingVerwijderen(Afbeelding afbeelding) {
+
+        try {
+            Connection conn = GetConnection();
+            String sql2 = "";
+            Statement stmt;
+
+            stmt = conn.createStatement();
+
+            if (afbeelding.getAfbeeldingid() != 0) {
+
+                sql2 = "DELETE FROM afbeelding WHERE afbeeldingId=" + afbeelding.getAfbeeldingid() + ";";
+
+                int resultDel2 = stmt.executeUpdate(sql2);
+                System.out.println(resultDel2);
+
+                JOptionPane.showMessageDialog(null, "Afbeelding verwijderen gelukt");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Gelieve een afbeelding te selecteren");
+
+            }
+            conn.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
 
 
