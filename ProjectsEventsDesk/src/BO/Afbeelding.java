@@ -98,8 +98,13 @@ public class Afbeelding implements Serializable {
 
     @Override
     public String toString() {
-        return "BO.Afbeelding[ afbeeldingid=" + afbeeldingid + " ]";
+        
+        String afb = afbeelding;
+        String replAfb = afb.replaceAll("Images/Zalen/", "");
+        
+        return replAfb;
     }
+    
 
     public void setZaalid(String zaalid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
