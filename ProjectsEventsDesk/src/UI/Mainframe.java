@@ -535,8 +535,12 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void btnVerwijderenFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenFotoActionPerformed
 
+        Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
         Afbeelding afbeelding = (Afbeelding) lstbAfbeeldingen.getSelectedValue();
         service.DeleteAfbeelding(afbeelding);
+        
+        List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
+        lstbAfbeeldingen.setListData(afbeeldingen.toArray());
 
     }//GEN-LAST:event_btnVerwijderenFotoActionPerformed
 
