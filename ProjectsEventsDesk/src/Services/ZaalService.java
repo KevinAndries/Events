@@ -17,16 +17,17 @@ import java.util.List;
 public class ZaalService {
 
     private final DaZalen da = new DaZalen();
+    
 
     public List<Zaal> getAllZaal() {
 
         return da.getAll();
     }
 
-//    public List<Afbeelding> getAllAfbeeldingen() {
-//
-//        return da.getAllAfbeelding();
-//    }
+    public List<Afbeelding> getAllAfbeeldingen(Zaal z) {
+
+        return da.getAllAfbeelding(z);
+    }
 
     public void UpdateZaal(int ID, Zaal zaal) {
         DaZalen.ZaalToevoegen(zaal);

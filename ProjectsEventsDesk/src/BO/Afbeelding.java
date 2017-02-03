@@ -43,7 +43,7 @@ public class Afbeelding implements Serializable {
     private String afbeelding;
     @JoinColumn(name = "ZAALID", referencedColumnName = "ZAALID")
     @ManyToOne(optional = false)
-    private Zaal zaalid;
+    private int zaalid;
 
     public Afbeelding() {
     }
@@ -68,11 +68,11 @@ public class Afbeelding implements Serializable {
         this.afbeelding = afbeelding;
     }
 
-    public Zaal getZaalid() {
+    public int getZaalid() {
         return zaalid;
     }
 
-    public void setZaalid(Zaal zaalid) {
+    public void setZaalid(int zaalid) {
         this.zaalid = zaalid;
     }
 

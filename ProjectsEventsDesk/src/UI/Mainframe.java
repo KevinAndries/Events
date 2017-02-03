@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -85,7 +87,7 @@ public class Mainframe extends javax.swing.JFrame {
         lblFoto = new javax.swing.JLabel();
         btnToevoegenFoto = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        lstbAfbeeldingen = new javax.swing.JList<>();
+        lstbAfbeeldingen = new javax.swing.JList();
         jLabelAfbeelding = new javax.swing.JLabel();
         btnVerwijderenFoto = new javax.swing.JButton();
 
@@ -285,10 +287,10 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
-        lstbAfbeeldingen.setModel(new javax.swing.AbstractListModel<String>() {
+        lstbAfbeeldingen.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         lstbAfbeeldingen.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -298,6 +300,11 @@ public class Mainframe extends javax.swing.JFrame {
         jScrollPane4.setViewportView(lstbAfbeeldingen);
 
         btnVerwijderenFoto.setText("Foto's verwijderen");
+        btnVerwijderenFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerwijderenFotoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -434,8 +441,6 @@ public class Mainframe extends javax.swing.JFrame {
             txtCapStaandUp.setText(String.valueOf(zaal.getCapStaand()));
             txtOppervlakteUp.setText(String.valueOf(zaal.getOppervlakte()));
             txtTarievenUp.setText(String.valueOf(zaal.getTarieven()));
-            
-            
 
             BufferedImage img;
             try {
@@ -446,6 +451,19 @@ public class Mainframe extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+        
+            
+if (zaal != null) {
+
+        }
+        List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
+        lstbAfbeeldingen.setListData(afbeeldingen.toArray()); 
+
+
+            
+            
         }
     }//GEN-LAST:event_lstbZalenValueChanged
 
@@ -504,8 +522,25 @@ public class Mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_lstbZalenMouseClicked
 
     private void lstbAfbeeldingenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstbAfbeeldingenValueChanged
- 
+         
+//        Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
+//
+//        if (zaal != null) {
+//
+//        }
+//        lstbAfbeeldingen.setListData((String[]) service.getAllAfbeeldingen(zaal).toArray());
+         
+        
+        
+        
+                
+             
     }//GEN-LAST:event_lstbAfbeeldingenValueChanged
+
+    private void btnVerwijderenFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenFotoActionPerformed
+        
+        
+    }//GEN-LAST:event_btnVerwijderenFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,7 +602,7 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel lblOppervlakteUp;
     private javax.swing.JLabel lblPostcodeUp;
     private javax.swing.JLabel lblTarievenUp;
-    private javax.swing.JList<String> lstbAfbeeldingen;
+    private javax.swing.JList lstbAfbeeldingen;
     private javax.swing.JList lstbZalen;
     private javax.swing.JTextField txtAdresUp;
     private javax.swing.JTextField txtCapStaandUp;

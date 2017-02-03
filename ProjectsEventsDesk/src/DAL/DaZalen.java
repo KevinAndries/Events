@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -134,7 +135,7 @@ public class DaZalen {
 
     }
     
-        public ArrayList<Afbeelding> getAllAfbeelding() {
+        public ArrayList<Afbeelding> getAllAfbeelding(Zaal zaal) {
 
         ArrayList<Afbeelding> resultAfbeelding = new ArrayList<>();
 
@@ -143,7 +144,7 @@ public class DaZalen {
             Statement stmt;
 
             stmt = conn.createStatement();
-            String sqlGegevens = "SELECT afbeelding.afbeeldingid, afbeelding.zaalid, afbeelding.afbeelding FROM `afbeelding` inner join zaal on afbeelding.zaalid = zaal.zaalid";
+            String sqlGegevens = "SELECT * FROM afbeelding where zaalId = '" +  zaal.getZaalId() + "'";
             
             ResultSet rs = stmt.executeQuery(sqlGegevens);
             while (rs.next()) {
@@ -151,7 +152,7 @@ public class DaZalen {
                 Afbeelding afbeelding = new Afbeelding();
                 afbeelding.setAfbeeldingid(rs.getInt("afbeeldingId"));
                 afbeelding.setAfbeelding(rs.getString("afbeelding"));     
-                afbeelding.setZaalid(rs.getString("zaalid"));
+                afbeelding.setZaalid(rs.getInt("zaalId"));
                 resultAfbeelding.add(afbeelding);
             }
 
@@ -235,5 +236,7 @@ public class DaZalen {
         }
 
     }
+
+
 
 }
