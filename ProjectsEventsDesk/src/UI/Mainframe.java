@@ -414,6 +414,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         NewZaal zfr = new NewZaal();
         zfr.setVisible(true);
+        lstbZalen.setListData(service.getAllZaal().toArray());
     }//GEN-LAST:event_btnToevoegenActionPerformed
 
     private void btnVerwijderenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenActionPerformed

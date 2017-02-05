@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 public class NewZaal extends javax.swing.JFrame {
@@ -323,6 +322,8 @@ public class NewZaal extends javax.swing.JFrame {
         zaal.setProfiel(sbfinal);
 
         service.SaveZaal(zaal);
+        
+        
 
 
     }//GEN-LAST:event_btnOpslaanActionPerformed
