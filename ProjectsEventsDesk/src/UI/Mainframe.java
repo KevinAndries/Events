@@ -11,9 +11,11 @@ import java.awt.FileDialog;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import static java.rmi.Naming.list;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import static org.eclipse.persistence.jpa.jpql.utility.CollectionTools.list;
 
 public class Mainframe extends javax.swing.JFrame {
 
@@ -340,7 +343,7 @@ public class Mainframe extends javax.swing.JFrame {
                 .addGroup(jPanelZaalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTarievenUp)
                     .addComponent(txtTarievenUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         lstbAfbeeldingen.setModel(new javax.swing.AbstractListModel() {
@@ -348,6 +351,7 @@ public class Mainframe extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        lstbAfbeeldingen.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstbAfbeeldingen.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstbAfbeeldingenValueChanged(evt);
@@ -362,18 +366,18 @@ public class Mainframe extends javax.swing.JFrame {
             .addGroup(jPanelAfbeeldingLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAfbeeldingLayout.setVerticalGroup(
             jPanelAfbeeldingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAfbeeldingLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAfbeeldingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAfbeelding, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -416,6 +420,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         Zaal zaal = (Zaal) lstbZalen.getSelectedValue();
         service.DeleteZaal(zaal);
+        lstbZalen.setListData(service.getAllZaal().toArray());
     }//GEN-LAST:event_btnVerwijderenActionPerformed
 
     private void lstbZalenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstbZalenMouseClicked
@@ -423,6 +428,8 @@ public class Mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_lstbZalenMouseClicked
 
     private void lstbZalenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstbZalenValueChanged
+
+        int index = 1;
 
         jPanelZaal.setVisible(true);
         jPanelAfbeelding.setVisible(true);
@@ -453,16 +460,21 @@ public class Mainframe extends javax.swing.JFrame {
             BufferedImage img;
             try {
                 img = ImageIO.read(new File("C:\\Users\\andri\\Desktop\\Programmeren 4 project thuis\\SVN GitHub\\ProjectsEventsDesk\\" + zaal.getProfiel()));
-                    ImageIcon icon = new ImageIcon(img);
-                    lblFoto.setIcon(icon);
+                ImageIcon icon = new ImageIcon(img);
+                lblFoto.setIcon(icon);
 
-                } catch (IOException ex) {
-                    Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+            } catch (IOException ex) {
+                Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
-            List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
-            lstbAfbeeldingen.setListData(afbeeldingen.toArray());
+
+        }
+
+        if (lstbAfbeeldingen.getModel().getSize() > 0) {
+            lstbAfbeeldingen.setSelectedIndex(index);
+        }
+
+        List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
+        lstbAfbeeldingen.setListData(afbeeldingen.toArray());
     }//GEN-LAST:event_lstbZalenValueChanged
 
     private void btnWijzigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWijzigenActionPerformed
@@ -544,6 +556,8 @@ public class Mainframe extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        List<Afbeelding> afbeeldingen = service.getAllAfbeeldingen(zaal);
+        lstbAfbeeldingen.setListData(afbeeldingen.toArray());
     }//GEN-LAST:event_btnToevoegenFotoActionPerformed
 
     private void btnVerwijderenFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenFotoActionPerformed
@@ -576,14 +590,14 @@ public class Mainframe extends javax.swing.JFrame {
             BufferedImage img;
             try {
                 img = ImageIO.read(new File("C:\\Users\\andri\\Desktop\\Programmeren 4 project thuis\\SVN GitHub\\ProjectsEventsDesk\\" + afbeelding.getAfbeelding()));
-                    ImageIcon icon = new ImageIcon(img);
-                    lblAfbeelding.setIcon(icon);
+                ImageIcon icon = new ImageIcon(img);
+                lblAfbeelding.setIcon(icon);
 
-                } catch (IOException ex) {
-                    Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+            } catch (IOException ex) {
+                Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        }
     }//GEN-LAST:event_lstbAfbeeldingenValueChanged
 
     /**

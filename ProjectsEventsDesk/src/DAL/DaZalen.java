@@ -182,7 +182,7 @@ public class DaZalen {
                 int result = stmt.executeUpdate(sql);
 
                 System.out.println(result);
-                stmt = conn.createStatement();
+                //stmt = conn.createStatement();
 
                 JOptionPane.showMessageDialog(null, "Er is een insert gebeurd");
 
@@ -194,7 +194,7 @@ public class DaZalen {
                 int resultUp = stmt.executeUpdate(sql);
 
                 System.out.println(resultUp);
-                stmt = conn.createStatement();
+
 
                 JOptionPane.showMessageDialog(null, "Er is een update gebeurd");
 
