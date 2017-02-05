@@ -252,11 +252,8 @@ public class Zaal {
 // Override
     @Override
     public String toString() {
-//        return "Id: " + id + " Zaal: " + naam +  "Adres: "+  adres + ", Huisnummer: " + huisnummer + ", Gemeente: " + gemeente + ", Postcode: " + postcode
-//                + ", Capaciteit zittend: " + capZittend + ", Capaciteit Staand: " + capStaand + ", Oppervlakte: " + oppervlakte + ", Kenmerken: " + kenmerken
-//                + ", Faciliteiten: " + faciliteiten + ", Tarieven: " + tarieven + "}";
-        
-                return "ID: " + ZaalId + " Zaal: " + naam +  "";//"Adres: "+  adres + ", Huisnummer: " + huisnummer + ", Gemeente: " + gemeente + ", Postcode: " + postcode
+       
+                return naam + " - " + gemeente + "";//"Adres: "+  adres + ", Huisnummer: " + huisnummer + ", Gemeente: " + gemeente + ", Postcode: " + postcode
                 //+ ", Capaciteit zittend: " + capZittend + ", Capaciteit Staand: " + capStaand + ", Oppervlakte: " + oppervlakte + ", Kenmerken: " + kenmerken
                 //+ ", Faciliteiten: " + faciliteiten + ", Tarieven: " + tarieven + "}";
     }
